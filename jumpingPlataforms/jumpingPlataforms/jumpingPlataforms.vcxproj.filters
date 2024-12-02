@@ -16,6 +16,9 @@
     <Filter Include="Archivos de origen\objects">
       <UniqueIdentifier>{486714ff-21fb-4a17-a712-cccee53a3fcb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\scenes">
+      <UniqueIdentifier>{5aba2452-a90e-42a4-998c-486116983ac0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,6 +27,12 @@
     <ClCompile Include="src\objects\player.cpp">
       <Filter>Archivos de origen\objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\gameplayScenes.cpp">
+      <Filter>Archivos de origen\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\objects\player.h">
@@ -31,6 +40,12 @@
     </ClInclude>
     <ClInclude Include="src\objects\utils.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\gameplayScenes.h">
+      <Filter>Archivos de origen\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Archivos de origen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

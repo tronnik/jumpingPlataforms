@@ -3,7 +3,7 @@
 void initPlayer(Player& p)
 {
 	p.position = { 640 / 2, 480 / 2};
-	p.speed = { 20, 20 };
+	p.speed = { 150, 150 };
 	p.height = 100;
 	p.width = 100;
 	p.gravity = 0;
