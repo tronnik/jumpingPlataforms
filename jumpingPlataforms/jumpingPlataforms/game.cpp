@@ -7,6 +7,11 @@
 
 bool windowOpen = true;
 
+int screenHeight = 768;
+int screenHeightMin = 0;
+int screenWidth = 800;
+int screenWidthMin = 0;
+
 static void initializationGame();
 static void updateGame();
 static void drawGame();
