@@ -146,11 +146,13 @@
   <ItemGroup>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\objects\plataforms.cpp" />
     <ClCompile Include="src\objects\player.cpp" />
     <ClCompile Include="src\scenes\gameplayScenes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
+    <ClInclude Include="src\objects\plataforms.h" />
     <ClInclude Include="src\objects\player.h" />
     <ClInclude Include="src\objects\utils.h" />
     <ClInclude Include="src\scenes\gameplayScenes.h" />
