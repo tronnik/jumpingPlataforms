@@ -1,30 +1,23 @@
 #include "raylib.h"
 
+#include "objects/player.h"
+#include "objects/utils.h"
+
 int main()
 {
-    // Inicialización
-    InitWindow(640, 480, "Mi juego");
+    Player player;
 
-    int posX = 320;
-    int posY = 225;
-    float radio = 100.0f;
+    // Inicialización
+    InitWindow(screenWidth, screenHeight, "Mi juego");
+
+    initPlayer(player);
 
     // Loop
     while (!WindowShouldClose())
     {
         // Chequeo de Input
 
-        if (IsKeyDown(KEY_UP))
-            posY--;
-
-        if (IsKeyDown(KEY_DOWN))
-            posY++;
-
-        if (IsKeyDown(KEY_LEFT))
-            posX--;
-
-        if (IsKeyDown(KEY_RIGHT))
-            posX++;
+        updatePlayer(player);
 
 
         // Actualización
@@ -33,7 +26,7 @@ int main()
         BeginDrawing();
         ClearBackground(WHITE); // system("cls");
 
-        DrawCircle(posX, posY, radio, BLUE);
+        drawPlayer(player);
 
         EndDrawing();
     }
