@@ -9,9 +9,9 @@ struct Player
 	int height;
 	int width;
 	int gravity;
+	int score;
+	bool hasCollided = false;
 };
-
-
 
 void initPlayer(Player& p);
 void updatePlayer(Player& p);

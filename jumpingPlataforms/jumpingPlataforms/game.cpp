@@ -47,12 +47,15 @@ void updateGame()
 void drawGame()
 {
 	BeginDrawing();
-	ClearBackground(WHITE); 
+	ClearBackground(BLACK); 
 
 	DrawText(TextFormat(" 0"), (screenWidth / 2), screenHeightMin, 30, RED);
 
 	DrawText(TextFormat(" 768"), (screenWidth / 2), screenHeight - 50, 30, RED);
 
+	DrawText(TextFormat(" 0"), screenWidthMin, screenHeight / 2, 30, RED);
+
+	DrawText(TextFormat(" 768"), screenWidth - 80, screenHeight / 2, 30, RED);
 
 	gameplayDraw();
 

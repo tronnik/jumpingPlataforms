@@ -5,15 +5,17 @@
 void initPlayer(Player& p)
 {
 	p.position = { 640 / 2, 480 / 2};
-	p.speed = { 150, 150 };
+	p.speed = { 200, 200 };
 	p.height = 100;
 	p.width = 100;
 	p.gravity = 500;
+	p.score = 0;
+	p.hasCollided = false;
 }
 
 void updatePlayer(Player& p)
 {
-	float reduceVelocity = -200.0f;
+	float antiGravity = -200.0f;
 
 	if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) p.position.x -= p.speed.x * GetFrameTime();
 	if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) p.position.x += p.speed.x * GetFrameTime();
@@ -38,10 +40,12 @@ void updatePlayer(Player& p)
 	p.position.y += p.speed.y * GetFrameTime();
 	
 	if (IsKeyDown(KEY_SPACE))
-		p.speed.y = reduceVelocity;
+		p.speed.y = antiGravity;
 }
 
 void drawPlayer(Player& p)
 {
 	DrawRectangle(static_cast<int>(p.position.x), static_cast<int>(p.position.y), p.width, p.height, RED);
+	DrawText(TextFormat(" Points: %01i", p.score), screenWidthMin, screenHeightMin, 30, RED);
+
 }
