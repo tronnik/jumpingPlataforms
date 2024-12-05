@@ -6,6 +6,9 @@ static int addPoints = 1;
 
 static float reduceVelocity = -200.0f;
 
+static Texture2D background;
+
+
 void gameplayInit()
 {
 	initPlayer(player);
@@ -15,6 +18,8 @@ void gameplayInit()
 void loadGameplayTextures()
 {
 	loadTexturePlayer();
+	background = LoadTexture("res/background.png");
+
 }
 
 bool checkCollision(Player p, Plataform plat)
@@ -59,8 +64,8 @@ void gameplayUpdate()
 
 void gameplayDraw()
 {
+	DrawTexture(background, 0, 0, LIGHTGRAY);
 	drawPlayer(player);
 	drawPlataform();
-
 
 }
