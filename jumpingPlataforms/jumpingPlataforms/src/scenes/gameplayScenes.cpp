@@ -2,7 +2,7 @@
 
 Player player;
 
-static int addPoints = 10;
+static int addPoints = 1;
 
 static float reduceVelocity = -200.0f;
 
@@ -10,6 +10,11 @@ void gameplayInit()
 {
 	initPlayer(player);
 	initPlataform();
+}
+
+void loadGameplayTextures()
+{
+	loadTexturePlayer();
 }
 
 bool checkCollision(Player p, Plataform plat)
@@ -26,18 +31,22 @@ bool checkCollision(Player p, Plataform plat)
 
 void doCollision()
 {
-	if (checkCollision(player, plataform))
+
+	for (int i = 0; i < maxPlataforms; i++)
 	{
-		if (!player.hasCollided)
+		if (checkCollision(player, plataforms[i]))
 		{
-			player.score += addPoints;
-			player.hasCollided = true;
+			if (!plataforms[i].hasCollided)
+			{
+				player.score += addPoints;
+				plataforms[i].hasCollided = true; 
+			}
+			player.speed.y = reduceVelocity;
 		}
-		player.speed.y = reduceVelocity;
-	}
-	else
-	{
-		player.hasCollided = false;
+		else
+		{
+			plataforms[i].hasCollided = false; 
+		}
 	}
 }
 

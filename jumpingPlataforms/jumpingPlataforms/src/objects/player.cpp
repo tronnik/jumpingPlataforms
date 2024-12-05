@@ -2,16 +2,22 @@
 
 #include "objects/utils.h"
 
+static Texture2D playerTexture;
+
 void initPlayer(Player& p)
 {
 	p.position = { static_cast<float>(screenWidth) / 2, static_cast<float>(screenHeight) / 2 - 100 };
-	p.speed = { 200, 200 };
-	p.height = 100;
-	p.width = 100;
-	p.gravity = 500;
+	p.speed = { 700, 700 };
+	p.height = 60;
+	p.width = 50;
+	p.gravity = 450;
 	p.score = 0;
-	p.hasCollided = false;
 	p.life = 3;
+}
+
+void loadTexturePlayer()
+{
+	playerTexture = LoadTexture("res/player.png");
 }
 
 void updatePlayer(Player& p)
@@ -40,23 +46,26 @@ void updatePlayer(Player& p)
 	{
 		p.life--;
 		p.position.x = static_cast<float>(screenWidth) / 2;
-		p.position.y = static_cast<float>(screenHeight) / 2;
-		p.speed.x = 200;
-		p.speed.y = 200;
+		p.position.y = static_cast<float>(screenHeight) / 2 - 200;
+		p.speed.x = 700;
+		p.speed.y = 700;
 	}
 
 	p.speed.y += p.gravity * GetFrameTime();
-	
+
 	p.position.y += p.speed.y * GetFrameTime();
-	
+
 	if (IsKeyDown(KEY_SPACE))
 		p.speed.y = antiGravity;
 }
 
 void drawPlayer(Player& p)
 {
+	float scale = 2.0f;
+
 	DrawRectangle(static_cast<int>(p.position.x), static_cast<int>(p.position.y), p.width, p.height, RED);
 	DrawText(TextFormat(" Life: % 01i", p.life), screenWidthMin, screenHeightMin, 30, RED);
 	DrawText(TextFormat(" Points: %01i", p.score), screenWidth - 200, screenHeightMin, 30, RED);
 
+	DrawTextureEx(playerTexture, { p.position.x - 5, p.position.y - 5}, 0.0f, scale, WHITE);
 }

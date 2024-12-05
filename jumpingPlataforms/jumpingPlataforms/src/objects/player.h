@@ -10,10 +10,10 @@ struct Player
 	int width;
 	int gravity;
 	int score;
-	bool hasCollided = false;
 	int life;
 };
 
 void initPlayer(Player& p);
+void loadTexturePlayer();
 void updatePlayer(Player& p);
 void drawPlayer(Player& p);

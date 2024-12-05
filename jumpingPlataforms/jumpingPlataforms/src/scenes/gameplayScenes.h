@@ -5,6 +5,8 @@
 
 void gameplayInit();
 
+void loadGameplayTextures();
+
 bool checkCollision(Player p, Plataform plat);
 
 void doCollision();

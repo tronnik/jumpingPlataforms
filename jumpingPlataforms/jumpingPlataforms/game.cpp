@@ -37,6 +37,8 @@ void initializationGame()
 	InitWindow(screenWidth, screenHeight, "Mi juego");
 
 	gameplayInit();
+
+	loadGameplayTextures();
 }
 
 void updateGame()
