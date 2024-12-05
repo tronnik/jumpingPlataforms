@@ -11,6 +11,7 @@ struct Player
 	int gravity;
 	int score;
 	bool hasCollided = false;
+	int life;
 };
 
 void initPlayer(Player& p);
