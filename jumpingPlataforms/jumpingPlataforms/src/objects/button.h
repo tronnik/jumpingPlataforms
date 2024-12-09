@@ -24,11 +24,10 @@ void initPageButton(Button& b, int xPos, int yPos);
 void drawButton(Button& b);
 bool isButtonPressed(Button& b);
 
-void createPlayButton(bool& menuOn);
-void createCreditsButton(bool& creditsOn, bool& menuOn);
-void createControlsButton(bool& controlsOn, bool& menuOn);
-void createExitButton();
-
+void drawPlayTitle();
+void drawControlTitle();
+void drawCreditsTitle();
+void drawExitTitle();
 void drawBackToMenuTitle();
 void drawPauseButtonTitle();
 void drawResumeGameTitle();

@@ -3,7 +3,6 @@
 #include "raylib.h"
 
 #include "objects/utils.h"
-#include "gameLoop/game.h"
 
 Button button;
 Button controls;
@@ -62,66 +61,25 @@ bool isButtonPressed(Button& b)
 		static_cast<float>(b.width), static_cast<float>(b.height) }) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
 }
 
-void createPlayButton(bool& menuOn)
+void drawPlayTitle()
 {
-	initButton(button, screenWidth / 2 - forty, threeHundredSixty);
-	drawButton(button);
-	DrawText(TextFormat("PLAY"), screenWidth / 2 - forty, 360, sizeLetters, RED);
-	if (isButtonPressed(button))
-	{
-		//PlaySound(clickSfx);
-
-		menuOn = false;
-
-		//resetGame();
-	}
+	DrawText(TextFormat("PLAY"), screenWidth / 2 - forty, threeHundredSixty, sizeLetters, RED);
 }
 
-void createCreditsButton(bool& creditsOn, bool& menuOn)
+void drawControlTitle()
 {
-	initButton(credits, screenWidth / 2 - seventy, fourHundredSixty);
-	drawButton(credits);
 	DrawText(TextFormat("CREDITS"), screenWidth / 2 - seventy, fourHundredSixty, sizeLetters, RED);
-	if (isButtonPressed(credits))
-	{
-		//PlaySound(clickSfx);
-
-		creditsOn = true;
-		menuOn = false;
-
-	}
 }
 
-void createControlsButton(bool& controlsOn, bool& menuOn)
+void drawCreditsTitle()
 {
-	initButton(controls, screenWidth / 2 - eighty, fiveHundredSixty);
-	drawButton(controls);
 	DrawText(TextFormat("CONTROLS"), screenWidth / 2 - eighty, fiveHundredSixty, sizeLetters, RED);
-	if (isButtonPressed(controls))
-	{
-		//PlaySound(clickSfx);
-
-		controlsOn = true;
-		menuOn = false;
-
-	}
-
 }
 
-void createExitButton()
+void drawExitTitle()
 {
-	initButton(exitGame, screenWidth / 2 - forty, sixHundredSixty);
-	drawButton(exitGame);
 	DrawText(TextFormat("EXIT"), screenWidth / 2 - forty, sixHundredSixty, sizeLetters, RED);
-	if (isButtonPressed(exitGame))
-	{
-		//PlaySound(clickSfx);
-
-		close();
-
-	}
 }
-
 
 void drawBackToMenuTitle()
 {

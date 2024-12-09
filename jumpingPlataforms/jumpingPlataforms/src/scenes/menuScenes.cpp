@@ -8,8 +8,10 @@
 #include "objects/player.h"
 #include "gameLoop/game.h"
 
+
 //extern Texture2D background;
-//extern Music menuMusic;
+extern Music menuMusic;
+//Sound clickSfx;
 
 Button ItchButton;
 Button backgroundButton;
@@ -25,7 +27,6 @@ Button loseSfxButton;
 Button boostSfxButton;
 Button shootSfxButton;
 
-//Sound clickSfx;
 
 static void drawPageButton(bool& creditsOn, bool& creditsOn2);
 
@@ -42,6 +43,13 @@ static int sevenHundred = 700;
 
 void initMenu()
 {
+	initButton(button, (screenWidth / 2 - hundred), threeHundredFifty);
+
+	initButton(controls, (screenWidth / 2 - hundred), (fiveHundred + fifty));
+
+	initButton(credits, (screenWidth / 2 - hundred), fourHundredFifty);
+
+	initButton(exitGame, (screenWidth / 2 - hundred), (fiveHundred + oneHundredFifty));
 
 	initButton(backToMenu, (screenWidth / 2 + fifty), sevenHundred);
 
@@ -80,8 +88,8 @@ void initMenu()
 
 void loadMenu()
 {
+	menuMusic = LoadMusicStream("res/menuMusic.mp3");
 	//background = LoadTexture("res/background.png");
-	//menuMusic = LoadMusicStream("res/menuMusic.mp3");
 	//clickSfx = LoadSound("res/clickSfx.mp3");
 }
 
@@ -89,24 +97,57 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 {
 	ClearBackground(BLACK);
 
-	//SetMusicVolume(menuMusic, 0.5f);
-	//
+	SetMusicVolume(menuMusic, 0.5f);
+	
+	PlayMusicStream(menuMusic);
+	UpdateMusicStream(menuMusic);
+
 	//SetSoundVolume(clickSfx, 0.3f);
-	//
-	//PlayMusicStream(menuMusic);
-	//UpdateMusicStream(menuMusic);
-	//
+	
 	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
-	DrawText(TextFormat("astronaut survive"), (screenWidth / 2 - twoHundredFifty), oneHundredFifty, fifty, RED);
+	DrawText(TextFormat("Astronaut Survive"), (screenWidth / 2 - twoHundredFifty), oneHundredFifty, fifty, RED);
 
-	createPlayButton(menuOn);
-	createCreditsButton(creditsOn, menuOn);
-	createControlsButton(controlsOn, menuOn);
-	createExitButton();
-	
+	drawButton(button);
+	drawButton(controls);
+	drawButton(credits);
+	drawButton(exitGame);
 
-	
+	drawPlayTitle();
+	drawControlTitle();
+	drawCreditsTitle();
+	drawExitTitle();
+
+	if (isButtonPressed(button))
+	{
+		//PlaySound(clickSfx);
+
+		menuOn = false;
+
+		//resetGame();
+	}
+
+	if (isButtonPressed(controls))
+	{
+		//PlaySound(clickSfx);
+		controlsOn = true;
+		menuOn = false;
+	}
+
+	if (isButtonPressed(credits))
+	{
+		//PlaySound(clickSfx);
+		creditsOn = true;
+		menuOn = false;
+	}
+
+	if (isButtonPressed(exitGame))
+	{
+		//PlaySound(clickSfx);
+		StopMusicStream(menuMusic);
+
+		close();
+	}
 
 	if (isButtonPressed(backToMenu))
 	{
@@ -122,8 +163,8 @@ void drawConstrols(bool& menuOn, bool& controlsOn)
 	ClearBackground(BLACK);
 
 	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
-	//
-	//UpdateMusicStream(menuMusic);
+
+	UpdateMusicStream(menuMusic);
 
 	DrawText("CONTROLS", (screenWidth / 2 - hundred), hundred, sizeLetters + 10, WHITE);
 
@@ -136,6 +177,7 @@ void drawConstrols(bool& menuOn, bool& controlsOn)
 	DrawText("Move", (screenWidth / 2 + hundred), threeHundredFifty, sizeLetters, WHITE);
 
 	drawBackToMenu(menuOn, controlsOn);
+
 }
 
 void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
@@ -143,8 +185,8 @@ void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	ClearBackground(BLACK);
 
 	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
-	//
-	//UpdateMusicStream(menuMusic);
+
+	UpdateMusicStream(menuMusic);
 
 	DrawText(TextFormat("CREDITS"), (screenWidth / 2 - fifty), fifty, sizeLetters, WHITE);
 
@@ -207,8 +249,8 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	ClearBackground(BLACK);
 
 	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
-	//
-	//UpdateMusicStream(menuMusic);
+
+	UpdateMusicStream(menuMusic);
 
 	DrawText(TextFormat("CREDITS"), (screenWidth / 2 - hundred - 40), fifty, sizeLetters, WHITE);
 
@@ -284,17 +326,41 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 void drawBackToMenu(bool& boolTrue, bool& boolFalse)
 {
 	ClearBackground(BLACK);
-	
+
 	drawButton(backToMenu);
-	
+
 	drawBackToMenuTitle();
-	
+
 	if (isButtonPressed(backToMenu))
 	{
 		//PlaySound(clickSfx);
 		boolTrue = true;
 		boolFalse = false;
 	}
+}
+
+void drawPause(bool& menuOn, bool& pauseOn)
+{
+	ClearBackground(BLACK);
+
+	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+
+	UpdateMusicStream(menuMusic);
+
+	DrawText(TextFormat("Pause game"), (screenWidth / 2 - oneHundredFifty), (screenHeight / 2 - hundred), fifty, WHITE);
+
+	DrawText(TextFormat("What Will You Do"), (screenWidth / 2 - twoHundred), (screenHeight / 2 - sizeLetters), fifty, WHITE);
+
+	drawButton(resumeGame);
+	drawResumeGameTitle();
+
+	if (isButtonPressed(resumeGame))
+	{
+		//PlaySound(clickSfx);
+		pauseOn = false;
+	}
+
+	drawBackToMenu(menuOn, pauseOn);
 }
 
 void drawPageButton(bool& creditsOn, bool& creditsOn2)
@@ -322,10 +388,37 @@ void drawPageButton(bool& creditsOn, bool& creditsOn2)
 	}
 }
 
+void drawGameOver(bool& menuOn, bool& gameOver)
+{
+
+	ClearBackground(BLACK);
+
+	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+
+	UpdateMusicStream(menuMusic);
+
+	DrawText(TextFormat("Game Over"), (screenWidth / 2 - hundred - 20), (screenHeight / 2 - hundred), fifty, WHITE);
+
+
+	DrawText(TextFormat("What Will You Do?"), (screenWidth / 2 - twoHundred), (screenHeight / 2 + 40), fifty, WHITE);
+
+	drawButton(playAgain);
+	drawPlayAgainTitle();
+
+	if (isButtonPressed(playAgain))
+	{
+		//PlaySound(clickSfx);
+		gameOver = false;
+		//resetGame();
+	}
+
+	drawBackToMenu(menuOn, gameOver);
+}
+
 void unloadMenu()
 {
 	//UnloadTexture(background);
-	//UnloadMusicStream(menuMusic);
+	UnloadMusicStream(menuMusic);
 	//UnloadSound(clickSfx);
 }
 

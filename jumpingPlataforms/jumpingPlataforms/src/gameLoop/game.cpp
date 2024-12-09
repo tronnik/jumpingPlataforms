@@ -22,9 +22,13 @@ bool gameOver = false;
 bool pauseOn = false;
 bool windowOpen = true;
 
+Music menuMusic;
+Music gameplayMusic;
+
 static void initializationGame();
 static void updateGame();
 static void drawGame();
+static void UnloadGameTextureAndMusic();
 
 void run()
 {
@@ -39,6 +43,8 @@ void run()
 
 	close();
 
+	UnloadGameTextureAndMusic();
+
 	CloseWindow();
 }
 
@@ -46,18 +52,20 @@ void initializationGame()
 {
 	InitWindow(screenWidth, screenHeight, "Mi juego");
 
+	InitAudioDevice();
+
 	gameplayInit();
+	initMenu();
 
 	loadGameplayTextures();
+	loadMenu();
 }
 
 void updateGame()
 {
-	//if (!menuOn && !gameOver && !creditsOn && !creditsOn2 && !controlsOn && !pauseOn)
-	if (!menuOn)
-	{
+	if (!menuOn && !gameOver && !creditsOn && !creditsOn2 && !controlsOn && !pauseOn)
 		gameplayUpdate();
-	}
+
 
 
 }
@@ -91,6 +99,14 @@ void drawGame()
 	{
 		drawSecondCredits(menuOn, creditsOn, creditsOn2);
 	}
+	else if (gameOver)
+	{
+		drawGameOver(menuOn, gameOver);
+	}
+	else if (pauseOn)
+	{
+		drawPause(menuOn, pauseOn);
+	}
 	else
 	{
 		gameplayDraw();
@@ -99,6 +115,12 @@ void drawGame()
 	//gameplayDraw();
 
 	EndDrawing();
+}
+
+void UnloadGameTextureAndMusic()
+{
+	unloadMenu();
+	unloadGameplay();
 }
 
 void close()

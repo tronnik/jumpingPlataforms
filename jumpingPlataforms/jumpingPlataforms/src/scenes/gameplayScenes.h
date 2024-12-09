@@ -15,3 +15,5 @@ void gameplayUpdate();
 
 void gameplayDraw();
 
+void unloadGameplay();
+

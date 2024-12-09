@@ -7,7 +7,7 @@ static int addPoints = 1;
 static float reduceVelocity = -200.0f;
 
 static Texture2D background;
-
+extern Music gameplayMusic;
 
 void gameplayInit()
 {
@@ -19,6 +19,7 @@ void loadGameplayTextures()
 {
 	loadTexturePlayer();
 	background = LoadTexture("res/background.png");
+	gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
 
 }
 
@@ -57,6 +58,11 @@ void doCollision()
 
 void gameplayUpdate()
 {
+	SetMusicVolume(gameplayMusic, 0.5f);
+
+	PlayMusicStream(gameplayMusic);
+	UpdateMusicStream(gameplayMusic);
+
 	updatePlayer(player);
 	updatePlataform();
 	doCollision();
@@ -68,4 +74,10 @@ void gameplayDraw()
 	drawPlayer(player);
 	drawPlataform();
 
+}
+
+void unloadGameplay()
+{
+	UnloadTexture(background);
+	UnloadMusicStream(gameplayMusic);
 }
