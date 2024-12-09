@@ -1,4 +1,4 @@
-#include "gameplayScenes.h"
+#include "scenes/gameplayScenes.h"
 
 Player player;
 

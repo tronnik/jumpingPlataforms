@@ -4,13 +4,23 @@
 
 #include "objects/utils.h"
 #include "scenes/gameplayScenes.h"
-
-bool windowOpen = true;
+#include "scenes/menuScenes.h"
+#include "objects/button.h"
 
 int screenHeight = 768;
 int screenHeightMin = 0;
 int screenWidth = 800;
 int screenWidthMin = 0;
+int sizeLetters = 30;
+
+bool menuOn = true;
+bool controlsOn = false;
+bool creditsOn = false;
+bool creditsOn2 = false;
+bool exitOn = false;
+bool gameOver = false;
+bool pauseOn = false;
+bool windowOpen = true;
 
 static void initializationGame();
 static void updateGame();
@@ -23,7 +33,7 @@ void run()
 	while (!WindowShouldClose() && windowOpen)
 	{
 		updateGame();
-	
+
 		drawGame();
 	}
 
@@ -43,13 +53,19 @@ void initializationGame()
 
 void updateGame()
 {
-	gameplayUpdate();
+	//if (!menuOn && !gameOver && !creditsOn && !creditsOn2 && !controlsOn && !pauseOn)
+	if (!menuOn)
+	{
+		gameplayUpdate();
+	}
+
+
 }
 
 void drawGame()
 {
 	BeginDrawing();
-	ClearBackground(BLACK); 
+	ClearBackground(BLACK);
 
 	DrawText(TextFormat(" 0"), (screenWidth / 2), screenHeightMin, 30, RED);
 
@@ -59,7 +75,28 @@ void drawGame()
 
 	DrawText(TextFormat(" 768"), screenWidth - 80, screenHeight / 2, 30, RED);
 
-	gameplayDraw();
+	if (menuOn)
+	{
+		drawMenu(menuOn, controlsOn, creditsOn);
+	}
+	else if (controlsOn)
+	{
+		drawConstrols(menuOn, controlsOn);
+	}
+	else if (creditsOn)
+	{
+		drawCredits(menuOn, creditsOn, creditsOn2);
+	}
+	else if (creditsOn2)
+	{
+		drawSecondCredits(menuOn, creditsOn, creditsOn2);
+	}
+	else
+	{
+		gameplayDraw();
+	}
+	
+	//gameplayDraw();
 
 	EndDrawing();
 }

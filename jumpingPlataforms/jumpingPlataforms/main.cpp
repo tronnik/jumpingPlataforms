@@ -1,4 +1,4 @@
-#include "game.h"
+#include "gameLoop/game.h"
 
 int main()
 {

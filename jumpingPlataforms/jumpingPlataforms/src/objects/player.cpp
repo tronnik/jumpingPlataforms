@@ -1,6 +1,7 @@
-#include "player.h"
+#include "objects/player.h"
 
 #include "objects/utils.h"
+
 
 static Texture2D playerTexture;
 

@@ -30,10 +30,16 @@
     <ClCompile Include="src\scenes\gameplayScenes.cpp">
       <Filter>Archivos de origen\scenes</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="src\objects\plataforms.cpp">
+      <Filter>Archivos de origen\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameLoop\game.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\objects\plataforms.cpp">
+    <ClCompile Include="src\scenes\menuScenes.cpp">
+      <Filter>Archivos de origen\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\objects\button.cpp">
       <Filter>Archivos de origen\objects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,10 +53,16 @@
     <ClInclude Include="src\scenes\gameplayScenes.h">
       <Filter>Archivos de origen\scenes</Filter>
     </ClInclude>
-    <ClInclude Include="game.h">
+    <ClInclude Include="src\objects\plataforms.h">
+      <Filter>Archivos de origen\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameLoop\game.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\plataforms.h">
+    <ClInclude Include="src\scenes\menuScenes.h">
+      <Filter>Archivos de origen\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\objects\button.h">
       <Filter>Archivos de origen\objects</Filter>
     </ClInclude>
   </ItemGroup>
