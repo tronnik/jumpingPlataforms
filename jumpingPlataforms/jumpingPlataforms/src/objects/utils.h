@@ -13,6 +13,7 @@ namespace jumpingPlataform
 	extern Font fontGame;
 	extern float oneVolume;
 	extern float threeVolume;
+
 }
 
 

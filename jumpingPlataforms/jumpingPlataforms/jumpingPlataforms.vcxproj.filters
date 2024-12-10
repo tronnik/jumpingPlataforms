@@ -48,6 +48,9 @@
     <ClCompile Include="src\scenes\gameOverScene.cpp">
       <Filter>Archivos de origen\scenes</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\gameplayPaused.cpp">
+      <Filter>Archivos de origen\scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\objects\player.h">
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="src\objects\utils.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\gameplayPaused.h">
+      <Filter>Archivos de origen\scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

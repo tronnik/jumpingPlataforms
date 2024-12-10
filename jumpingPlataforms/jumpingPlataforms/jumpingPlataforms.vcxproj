@@ -156,6 +156,7 @@
     <ClCompile Include="src\objects\plataforms.cpp" />
     <ClCompile Include="src\objects\player.cpp" />
     <ClCompile Include="src\scenes\gameOverScene.cpp" />
+    <ClCompile Include="src\scenes\gameplayPaused.cpp" />
     <ClCompile Include="src\scenes\gameplayScenes.cpp" />
     <ClCompile Include="src\scenes\menuScenes.cpp" />
     <ClCompile Include="src\scenes\pauseScene.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="src\objects\player.h" />
     <ClInclude Include="src\objects\utils.h" />
     <ClInclude Include="src\scenes\gameOverScene.h" />
+    <ClInclude Include="src\scenes\gameplayPaused.h" />
     <ClInclude Include="src\scenes\gameplayScenes.h" />
     <ClInclude Include="src\scenes\menuScenes.h" />
     <ClInclude Include="src\scenes\pauseScene.h" />

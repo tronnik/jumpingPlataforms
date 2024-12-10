@@ -22,7 +22,7 @@ namespace jumpingPlataform
 		p.speed = { 700, 700 };
 		p.height = 60;
 		p.width = 50;
-		p.gravity = 450;
+		p.gravity = 500;
 		p.score = 0;
 		p.life = 3;
 	}
@@ -47,7 +47,7 @@ namespace jumpingPlataform
 
 		int scoreCapSound = 10;
 
-		float antiGravity = -200.0f;
+		float antiGravity = -300.0f;
 
 		if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) p.position.x -= p.speed.x * GetFrameTime();
 		if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) p.position.x += p.speed.x * GetFrameTime();

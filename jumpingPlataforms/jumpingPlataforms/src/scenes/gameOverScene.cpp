@@ -36,7 +36,7 @@ namespace jumpingPlataform
 		drawButton(playAgain);
 		drawPlayAgainTitle();
 
-		if (isButtonPressed(playAgain))
+		if (isButtonPressed(playAgain) || IsKeyDown(KEY_ENTER))
 		{
 			PlaySound(clickSfx);
 			gameOver = false;

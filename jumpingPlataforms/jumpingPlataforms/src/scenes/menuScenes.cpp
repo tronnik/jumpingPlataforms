@@ -127,7 +127,7 @@ namespace jumpingPlataform
 		drawCreditsTitle();
 		drawExitTitle();
 
-		if (isButtonPressed(button))
+		if (isButtonPressed(button) || IsKeyDown(KEY_ENTER))
 		{
 			PlaySound(clickSfx);
 

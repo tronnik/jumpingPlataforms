@@ -9,6 +9,7 @@
 #include "scenes/pauseScene.h"
 #include "scenes/gameOverScene.h"
 #include "scenes/gameplayScenes.h"
+#include "scenes/gameplayPaused.h"
 
 namespace jumpingPlataform
 {
@@ -28,6 +29,7 @@ namespace jumpingPlataform
 	bool gameOver = false;
 	bool pauseOn = false;
 	bool windowOpen = true;
+	bool gameplayPaused = true;
 
 	Music menuMusic;
 	Music gameplayMusic;
@@ -74,7 +76,19 @@ namespace jumpingPlataform
 	void updateGame()
 	{
 		if (!menuOn && !gameOver && !creditsOn && !creditsOn2 && !controlsOn && !pauseOn)
-			gameplayUpdate(gameOver);
+		{
+			
+			if (gameplayPaused)
+			{
+				updateGameplyaPaused( gameplayPaused); 
+			}
+			else
+			{
+				gameplayUpdate(gameOver); 
+			}
+			
+
+		}
 	}
 
 	void drawGame()
@@ -108,7 +122,14 @@ namespace jumpingPlataform
 		}
 		else
 		{
-			gameplayDraw(menuOn, pauseOn);
+			if (gameplayPaused)
+			{
+				drawGameplayPaused(menuOn, pauseOn); 
+			}
+			else
+			{
+				gameplayDraw(menuOn, pauseOn);
+			}
 		}
 
 		EndDrawing();

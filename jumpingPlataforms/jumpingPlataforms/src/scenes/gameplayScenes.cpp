@@ -3,10 +3,10 @@
 #include "objects/utils.h"
 #include "objects/button.h"
 #include "scenes/pauseScene.h"
+#include "scenes/gameplayPaused.h"
 
 namespace jumpingPlataform
 {
-
 	static int addPoints = 1;
 
 	static float reduceVelocity = -200.0f;

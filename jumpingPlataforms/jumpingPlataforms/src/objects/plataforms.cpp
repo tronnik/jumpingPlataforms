@@ -12,11 +12,11 @@ namespace jumpingPlataform
 
 	void initPlataform()
 	{
-		const float initialY = static_cast<float>(screenHeight) / 2 + 150;
+		const float initialY = static_cast<float>(screenHeight) / 2 + 50;
 
 		for (int i = 0; i < maxPlataforms; i++)
 		{
-			plataforms[i].space = 300.0f;
+			plataforms[i].space = 250;
 
 			plataforms[i].position = { static_cast<float>(GetRandomValue(screenWidthMin, screenWidth)), initialY - i * plataforms[i].space };
 
