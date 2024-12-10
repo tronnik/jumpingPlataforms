@@ -21,7 +21,7 @@ void loadTexturePlayer()
 	playerTexture = LoadTexture("res/player.png");
 }
 
-void updatePlayer(Player& p)
+void updatePlayer(Player& p, bool& gameOver)
 {
 	float antiGravity = -200.0f;
 
@@ -58,6 +58,9 @@ void updatePlayer(Player& p)
 
 	if (IsKeyDown(KEY_SPACE))
 		p.speed.y = antiGravity;
+
+	if (p.life == 0)
+		gameOver = true;
 }
 
 void drawPlayer(Player& p)

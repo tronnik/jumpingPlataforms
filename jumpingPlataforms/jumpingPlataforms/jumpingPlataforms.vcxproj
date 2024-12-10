@@ -149,8 +149,10 @@
     <ClCompile Include="src\objects\button.cpp" />
     <ClCompile Include="src\objects\plataforms.cpp" />
     <ClCompile Include="src\objects\player.cpp" />
+    <ClCompile Include="src\scenes\gameOverScene.cpp" />
     <ClCompile Include="src\scenes\gameplayScenes.cpp" />
     <ClCompile Include="src\scenes\menuScenes.cpp" />
+    <ClCompile Include="src\scenes\pauseScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gameLoop\game.h" />
@@ -158,8 +160,10 @@
     <ClInclude Include="src\objects\plataforms.h" />
     <ClInclude Include="src\objects\player.h" />
     <ClInclude Include="src\objects\utils.h" />
+    <ClInclude Include="src\scenes\gameOverScene.h" />
     <ClInclude Include="src\scenes\gameplayScenes.h" />
     <ClInclude Include="src\scenes\menuScenes.h" />
+    <ClInclude Include="src\scenes\pauseScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

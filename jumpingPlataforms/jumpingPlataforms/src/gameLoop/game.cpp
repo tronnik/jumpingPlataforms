@@ -3,9 +3,11 @@
 #include "raylib.h"
 
 #include "objects/utils.h"
-#include "scenes/gameplayScenes.h"
-#include "scenes/menuScenes.h"
 #include "objects/button.h"
+#include "scenes/menuScenes.h"
+#include "scenes/pauseScene.h"
+#include "scenes/gameOverScene.h"
+#include "scenes/gameplayScenes.h"
 
 int screenHeight = 768;
 int screenHeightMin = 0;
@@ -64,10 +66,7 @@ void initializationGame()
 void updateGame()
 {
 	if (!menuOn && !gameOver && !creditsOn && !creditsOn2 && !controlsOn && !pauseOn)
-		gameplayUpdate();
-
-
-
+		gameplayUpdate(gameOver);
 }
 
 void drawGame()
@@ -101,7 +100,7 @@ void drawGame()
 	}
 	else if (gameOver)
 	{
-		drawGameOver(menuOn, gameOver);
+		drawGameOverScene(menuOn, gameOver);
 	}
 	else if (pauseOn)
 	{
@@ -109,11 +108,9 @@ void drawGame()
 	}
 	else
 	{
-		gameplayDraw();
+		gameplayDraw(menuOn, pauseOn);
 	}
 	
-	//gameplayDraw();
-
 	EndDrawing();
 }
 

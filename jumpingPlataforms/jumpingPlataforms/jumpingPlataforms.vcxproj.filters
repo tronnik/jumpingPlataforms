@@ -42,6 +42,12 @@
     <ClCompile Include="src\objects\button.cpp">
       <Filter>Archivos de origen\objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\pauseScene.cpp">
+      <Filter>Archivos de origen\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\gameOverScene.cpp">
+      <Filter>Archivos de origen\scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\objects\player.h">
@@ -64,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="src\objects\button.h">
       <Filter>Archivos de origen\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\pauseScene.h">
+      <Filter>Archivos de origen\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\gameOverScene.h">
+      <Filter>Archivos de origen\scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

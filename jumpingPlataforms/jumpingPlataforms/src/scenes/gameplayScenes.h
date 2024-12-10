@@ -11,9 +11,11 @@ bool checkCollision(Player p, Plataform plat);
 
 void doCollision();
 
-void gameplayUpdate();
+void gameplayUpdate(bool& gameOver);
 
-void gameplayDraw();
+void gameplayDraw(bool& menuOn, bool& pauseOn);
+
+void resetGame();
 
 void unloadGameplay();
 

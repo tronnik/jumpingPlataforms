@@ -1,5 +1,8 @@
 #include "scenes/gameplayScenes.h"
 
+#include "objects/button.h"
+#include "scenes/pauseScene.h"
+
 Player player;
 
 static int addPoints = 1;
@@ -13,6 +16,7 @@ void gameplayInit()
 {
 	initPlayer(player);
 	initPlataform();
+	initPauseButton();
 }
 
 void loadGameplayTextures()
@@ -56,24 +60,39 @@ void doCollision()
 	}
 }
 
-void gameplayUpdate()
+void gameplayUpdate(bool& gameOver)
 {
 	SetMusicVolume(gameplayMusic, 0.5f);
 
 	PlayMusicStream(gameplayMusic);
 	UpdateMusicStream(gameplayMusic);
 
-	updatePlayer(player);
+	updatePlayer(player, gameOver);
 	updatePlataform();
 	doCollision();
 }
 
-void gameplayDraw()
+void gameplayDraw(bool& menuOn, bool& pauseOn)
 {
 	DrawTexture(background, 0, 0, LIGHTGRAY);
 	drawPlayer(player);
 	drawPlataform();
 
+	drawButton(pauseGame);
+
+	drawPauseButtonTitle();
+
+	if (isButtonPressed(pauseGame))
+	{
+		pauseOn = true;
+		menuOn = false;
+	}
+}
+
+void resetGame()
+{
+	initPlayer(player);
+	initPlataform();
 }
 
 void unloadGameplay()

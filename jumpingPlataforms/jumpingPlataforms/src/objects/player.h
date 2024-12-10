@@ -15,5 +15,5 @@ struct Player
 
 void initPlayer(Player& p);
 void loadTexturePlayer();
-void updatePlayer(Player& p);
+void updatePlayer(Player& p, bool& gameOver);
 void drawPlayer(Player& p);

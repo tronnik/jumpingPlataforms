@@ -14,10 +14,6 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2);
 
 void drawBackToMenu(bool& boolTrue, bool& boolFalse);
 
-void drawPause(bool& menuOn, bool& pauseOn);
-
-void drawGameOver(bool& menuOn, bool& gameOver);
-
 void unloadMenu();
 
 

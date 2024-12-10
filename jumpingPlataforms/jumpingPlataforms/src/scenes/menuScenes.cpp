@@ -11,7 +11,7 @@
 
 //extern Texture2D background;
 extern Music menuMusic;
-//Sound clickSfx;
+Sound clickSfx;
 
 Button ItchButton;
 Button backgroundButton;
@@ -90,7 +90,7 @@ void loadMenu()
 {
 	menuMusic = LoadMusicStream("res/menuMusic.mp3");
 	//background = LoadTexture("res/background.png");
-	//clickSfx = LoadSound("res/clickSfx.mp3");
+	clickSfx = LoadSound("res/clickSfx.mp3");
 }
 
 void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
@@ -102,7 +102,7 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 	PlayMusicStream(menuMusic);
 	UpdateMusicStream(menuMusic);
 
-	//SetSoundVolume(clickSfx, 0.3f);
+	SetSoundVolume(clickSfx, 0.3f);
 	
 	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
@@ -120,30 +120,30 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 
 	if (isButtonPressed(button))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 
 		menuOn = false;
 
-		//resetGame();
+		resetGame();
 	}
 
 	if (isButtonPressed(controls))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		controlsOn = true;
 		menuOn = false;
 	}
 
 	if (isButtonPressed(credits))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		creditsOn = true;
 		menuOn = false;
 	}
 
 	if (isButtonPressed(exitGame))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		StopMusicStream(menuMusic);
 
 		close();
@@ -196,36 +196,36 @@ void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	DrawText("Valentin Villar", (screenWidth / 2 + fifty + 10), oneHundredFifty + 10, sizeLetters - 5, RED);
 	if (isButtonPressed(ItchButton))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		OpenURL("https://valentin-villar.itch.io/");
 	}
 
 	DrawText("Background By: ", (screenWidth / 2 - twoHundredFifty), twoHundredFifty, sizeLetters, WHITE);
 	drawButton(backgroundButton);
-	DrawText("Ansimuz", (screenWidth / 2 + hundred - 10), (twoHundredFifty + 10), sizeLetters, RED);
+	DrawText("YO", (screenWidth / 2 + hundred - 10), (twoHundredFifty + 10), sizeLetters, RED);
 	if (isButtonPressed(backgroundButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://ansimuz.itch.io/space-background");
+		PlaySound(clickSfx);
+		//OpenURL("https://ansimuz.itch.io/space-background");
 	}
 
 
-	DrawText("Spaceship By: ", (screenWidth / 2 - twoHundredFifty), threeHundredFifty, sizeLetters, WHITE);
+	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), threeHundredFifty, sizeLetters, WHITE);
 	drawButton(spaceShipButton);
-	DrawText("Pixel By Pixel", (screenWidth / 2 + hundred - 30), (threeHundredFifty + 10), (sizeLetters - 5), RED);
+	DrawText("vacio", (screenWidth / 2 + hundred - 30), (threeHundredFifty + 10), (sizeLetters - 5), RED);
 	if (isButtonPressed(spaceShipButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://pixel-by-pixel.itch.io/alcwilliam-space-ship-pack");
+		PlaySound(clickSfx);
+		//OpenURL("https://pixel-by-pixel.itch.io/alcwilliam-space-ship-pack");
 	}
 
-	DrawText("Bullets By: ", (screenWidth / 2 - twoHundredFifty), fourHundredFifty, sizeLetters, WHITE);
+	DrawText("vacio By: ", (screenWidth / 2 - twoHundredFifty), fourHundredFifty, sizeLetters, WHITE);
 	drawButton(bulletsButton);
-	DrawText("Ho88it", (screenWidth / 2 + hundred), (fourHundredFifty + 10), sizeLetters, RED);
+	DrawText("vacio", (screenWidth / 2 + hundred), (fourHundredFifty + 10), sizeLetters, RED);
 	if (isButtonPressed(bulletsButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://ho88it.itch.io/2-d-projectile-sprites-wild-west-character-pack");
+		PlaySound(clickSfx);
+		//OpenURL("https://ho88it.itch.io/2-d-projectile-sprites-wild-west-character-pack");
 	}
 
 	DrawText("Library: ", (screenWidth / 2 - twoHundredFifty), (fiveHundred + fifty), sizeLetters, WHITE);
@@ -234,7 +234,7 @@ void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	DrawText("Raylib", (screenWidth / 2 + hundred - 10), (fiveHundred + 60), sizeLetters, RED);
 	if (isButtonPressed(raylibButton))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		OpenURL("https://www.raylib.com/index.html");
 	}
 
@@ -259,8 +259,8 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	DrawText("Tronik", (screenWidth / 2 + hundred), (hundred + 10), sizeLetters, RED);
 	if (isButtonPressed(MenuMusicButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://suno.com/song/e59ff0d9-1128-4a84-a976-4d21dfbc791c");
+		PlaySound(clickSfx);
+		OpenURL("https://suno.com/song/1f50ed34-cad9-45c1-a778-1daaa4bc162e");
 	}
 
 	DrawText("Gameplay Music: ", (screenWidth / 2 - twoHundredFifty), (twoHundred - 20), sizeLetters, WHITE);
@@ -268,8 +268,8 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	DrawText("Tronik", (screenWidth / 2 + hundred), (twoHundred - 10), sizeLetters, RED);
 	if (isButtonPressed(gameplayMusicButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://suno.com/song/bbfb93c9-37f9-4d51-8cfd-e15823f02192");
+		PlaySound(clickSfx);
+		OpenURL("https://suno.com/song/8bd8538e-799e-4c38-b2b6-80c1e0cb0327");
 	}
 
 
@@ -278,44 +278,44 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	DrawText("Pixaby", (screenWidth / 2 + hundred), (twoHundredFifty + 20), sizeLetters, RED);
 	if (isButtonPressed(clickSfxButton))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		OpenURL("https://pixabay.com/sound-effects/click-234708/");
 	}
 
-	DrawText("Explosion SFX By: ", (screenWidth / 2 - twoHundredFifty), (threeHundredFifty - 10), sizeLetters, WHITE);
+	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), (threeHundredFifty - 10), sizeLetters, WHITE);
 	drawButton(explosionSfxButton);
-	DrawText("Zapslat", (screenWidth / 2 + hundred), threeHundredFifty, sizeLetters, RED);
+	DrawText("vacio", (screenWidth / 2 + hundred), threeHundredFifty, sizeLetters, RED);
 	if (isButtonPressed(explosionSfxButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://www.zapsplat.com/music/8bit-medium-explosion-bomb-boom-or-blast-cannon-retro-old-school-classic-cartoon/");
+		PlaySound(clickSfx);
+		//OpenURL("https://www.zapsplat.com/music/8bit-medium-explosion-bomb-boom-or-blast-cannon-retro-old-school-classic-cartoon/");
 	}
 
-	DrawText("lose SFX By: ", (screenWidth / 2 - twoHundredFifty), (fourHundredFifty - 30), sizeLetters, WHITE);
+	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), (fourHundredFifty - 30), sizeLetters, WHITE);
 	drawButton(loseSfxButton);
-	DrawText("Zapslat", (screenWidth / 2 + hundred), (fourHundredFifty - 20), sizeLetters, RED);
+	DrawText("vacio", (screenWidth / 2 + hundred), (fourHundredFifty - 20), sizeLetters, RED);
 	if (isButtonPressed(loseSfxButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://www.zapsplat.com/music/cartoon-orchestral-musical-pizzicato-riff-short-fail-or-lose/");
+		PlaySound(clickSfx);
+		//OpenURL("https://www.zapsplat.com/music/cartoon-orchestral-musical-pizzicato-riff-short-fail-or-lose/");
 	}
 
-	DrawText("Boost SFX by: ", (screenWidth / 2 - twoHundredFifty), fiveHundred, sizeLetters, WHITE);
+	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), fiveHundred, sizeLetters, WHITE);
 	drawButton(boostSfxButton);
-	DrawText("Elevenslab.io", (screenWidth / 2 + fifty), (fiveHundred + 10), sizeLetters, RED);
+	DrawText("vacio", (screenWidth / 2 + fifty), (fiveHundred + 10), sizeLetters, RED);
 	if (isButtonPressed(boostSfxButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://elevenlabs.io/app/sound-effects/history");
+		PlaySound(clickSfx);
+		//OpenURL("https://elevenlabs.io/app/sound-effects/history");
 	}
 
-	DrawText("Shoot SFX by: ", (screenWidth / 2 - twoHundredFifty), (fiveHundred + 80), sizeLetters, WHITE);
+	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), (fiveHundred + 80), sizeLetters, WHITE);
 	drawButton(shootSfxButton);
-	DrawText("Zapslat", (screenWidth / 2 + hundred), (fiveHundred + 90), sizeLetters, RED);
+	DrawText("vacio", (screenWidth / 2 + hundred), (fiveHundred + 90), sizeLetters, RED);
 	if (isButtonPressed(shootSfxButton))
 	{
-		//PlaySound(clickSfx);
-		OpenURL("https://www.zapsplat.com/music/anime-hard-and-fast-laser-shoot-3/");
+		PlaySound(clickSfx);
+		//OpenURL("https://www.zapsplat.com/music/anime-hard-and-fast-laser-shoot-3/");
 	}
 
 	drawPageButton(creditsOn, creditsOn2);
@@ -333,34 +333,10 @@ void drawBackToMenu(bool& boolTrue, bool& boolFalse)
 
 	if (isButtonPressed(backToMenu))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		boolTrue = true;
 		boolFalse = false;
 	}
-}
-
-void drawPause(bool& menuOn, bool& pauseOn)
-{
-	ClearBackground(BLACK);
-
-	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
-
-	UpdateMusicStream(menuMusic);
-
-	DrawText(TextFormat("Pause game"), (screenWidth / 2 - oneHundredFifty), (screenHeight / 2 - hundred), fifty, WHITE);
-
-	DrawText(TextFormat("What Will You Do"), (screenWidth / 2 - twoHundred), (screenHeight / 2 - sizeLetters), fifty, WHITE);
-
-	drawButton(resumeGame);
-	drawResumeGameTitle();
-
-	if (isButtonPressed(resumeGame))
-	{
-		//PlaySound(clickSfx);
-		pauseOn = false;
-	}
-
-	drawBackToMenu(menuOn, pauseOn);
 }
 
 void drawPageButton(bool& creditsOn, bool& creditsOn2)
@@ -372,7 +348,7 @@ void drawPageButton(bool& creditsOn, bool& creditsOn2)
 
 	if (isButtonPressed(page1))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		creditsOn = true;
 		creditsOn2 = false;
 	}
@@ -382,44 +358,17 @@ void drawPageButton(bool& creditsOn, bool& creditsOn2)
 
 	if (isButtonPressed(page2))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		creditsOn = false;
 		creditsOn2 = true;
 	}
-}
-
-void drawGameOver(bool& menuOn, bool& gameOver)
-{
-
-	ClearBackground(BLACK);
-
-	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
-
-	UpdateMusicStream(menuMusic);
-
-	DrawText(TextFormat("Game Over"), (screenWidth / 2 - hundred - 20), (screenHeight / 2 - hundred), fifty, WHITE);
-
-
-	DrawText(TextFormat("What Will You Do?"), (screenWidth / 2 - twoHundred), (screenHeight / 2 + 40), fifty, WHITE);
-
-	drawButton(playAgain);
-	drawPlayAgainTitle();
-
-	if (isButtonPressed(playAgain))
-	{
-		//PlaySound(clickSfx);
-		gameOver = false;
-		//resetGame();
-	}
-
-	drawBackToMenu(menuOn, gameOver);
 }
 
 void unloadMenu()
 {
 	//UnloadTexture(background);
 	UnloadMusicStream(menuMusic);
-	//UnloadSound(clickSfx);
+	UnloadSound(clickSfx);
 }
 
 
