@@ -15,18 +15,21 @@ Button playAgain;
 Button page1;
 Button page2;
 
+static int ten = 10;
+static int twnty = 20;
 static int thirty = 30;
-static int forty = 40;
+static int forty = 40; 
+static int sixty = 60;
 static int seventy = 70;
 static int eighty = 80;
 static int hundred = 100;
 static int twoHundred = 200;
 
-static int threeHundredSixty = 360;
-static int fourHundredSixty = 460;
-static int fiveHundredSixty = 560;
-static int sixHundredSixty = 660;
-static int sevenHundredTen = 710;
+static int threeHundredFifty = 350;
+static int fourHundredFifty = 450;
+static int fiveHundredFifty = 550;
+static int sixHundredFifty= 650;
+static int sevenHundred = 700;
 
 
 void initButton(Button& b, int xPos, int yPos)
@@ -63,51 +66,51 @@ bool isButtonPressed(Button& b)
 
 void drawPlayTitle()
 {
-	DrawText(TextFormat("PLAY"), screenWidth / 2 - forty, threeHundredSixty, sizeLetters, RED);
+	DrawTextEx(fontGame, "PLAY", { static_cast<float>(screenWidth / 2 - forty), static_cast<float>(threeHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 
 void drawControlTitle()
 {
-	DrawText(TextFormat("CREDITS"), screenWidth / 2 - seventy, fourHundredSixty, sizeLetters, RED);
+	DrawTextEx(fontGame, "CREDITS", { static_cast<float>(screenWidth / 2 - seventy), static_cast<float>(fourHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 
 void drawCreditsTitle()
 {
-	DrawText(TextFormat("CONTROLS"), screenWidth / 2 - eighty, fiveHundredSixty, sizeLetters, RED);
+	DrawTextEx(fontGame, "CONTROLS", { static_cast<float>(screenWidth / 2 - eighty), static_cast<float>(fiveHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 
 void drawExitTitle()
 {
-	DrawText(TextFormat("EXIT"), screenWidth / 2 - forty, sixHundredSixty, sizeLetters, RED);
+	DrawTextEx(fontGame, "EXIT", { static_cast<float>(screenWidth / 2 - forty), static_cast<float>(sixHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 
 void drawBackToMenuTitle()
 {
-	DrawText(TextFormat("MENU"), screenWidth / 2 + hundred + 10, sevenHundredTen, sizeLetters, RED);
+	DrawTextEx(fontGame, "MENU", { static_cast<float>(screenWidth / 2 + hundred ), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 
 void drawPauseButtonTitle()
 {
-	DrawText(TextFormat("PAUSE"), screenWidth - twoHundred, screenHeight - hundred + 10, sizeLetters, RED);
+	DrawTextEx(fontGame, "PAUSE", { static_cast<float>(screenWidth - twoHundred), static_cast<float>(screenHeight - hundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 
 void drawResumeGameTitle()
 {
-	DrawText(TextFormat("RESUME"), screenWidth / 2 - hundred - 60, sevenHundredTen, sizeLetters, RED);
+	DrawTextEx(fontGame, "RESUME", { static_cast<float>(screenWidth / 2 - hundred - sixty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 
 void drawPlayAgainTitle()
 {
-	DrawText(TextFormat("PLAY AGAIN"), screenWidth / 2 - twoHundred + 10, sevenHundredTen, sizeLetters, RED);
+	DrawTextEx(fontGame, "PLAY AGAIN", { static_cast<float>(screenWidth / 2 - twoHundred + twnty), static_cast<float>(sevenHundred + ten) }, static_cast<float>(sizeLetters - ten), 0.0f, RED);
 }
 
 void drawPage1Title()
 {
-	DrawText(TextFormat("1"), screenWidth / 2 - hundred - thirty, sevenHundredTen, sizeLetters, RED);
+	DrawTextEx(fontGame, "1", { static_cast<float>(screenWidth / 2 - hundred - thirty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 
 void drawPage2Title()
 {
-	DrawText(TextFormat("2"), screenWidth / 2 - thirty, sevenHundredTen, sizeLetters, RED);
+	DrawTextEx(fontGame, "2", { static_cast<float>(screenWidth / 2 - thirty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
 }
 

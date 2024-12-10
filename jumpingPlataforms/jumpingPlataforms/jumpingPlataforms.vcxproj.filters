@@ -53,9 +53,6 @@
     <ClInclude Include="src\objects\player.h">
       <Filter>Archivos de origen\objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\utils.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\scenes\gameplayScenes.h">
       <Filter>Archivos de origen\scenes</Filter>
     </ClInclude>
@@ -76,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="src\scenes\gameOverScene.h">
       <Filter>Archivos de origen\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\objects\utils.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

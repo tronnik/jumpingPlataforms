@@ -17,6 +17,7 @@ const int maxPlataforms = 6;
 extern Plataform plataforms[maxPlataforms];
 
 void initPlataform();
+void loadPlataformTexture();
 void updatePlataform();
 void drawPlataform();
 

@@ -1,5 +1,6 @@
 #include "scenes/gameplayScenes.h"
 
+#include "objects/utils.h"
 #include "objects/button.h"
 #include "scenes/pauseScene.h"
 
@@ -23,12 +24,13 @@ void gameplayInit()
 void loadGameplayTextures()
 {
 	loadTexturePlayer();
+	loadPlataformTexture();
 	background = LoadTexture("res/gameplaybackground.png");
 	gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
 	jumpSfx = LoadSound("res/jumpSfx.mp3");
 
-	SetMusicVolume(gameplayMusic, 0.1f);
-	SetSoundVolume(jumpSfx, 0.1f);
+	SetMusicVolume(gameplayMusic, oneVolume);
+	SetSoundVolume(jumpSfx, oneVolume);
 }
 
 bool checkCollision(Player p, Plataform plat)

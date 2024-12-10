@@ -12,7 +12,9 @@ static Sound pointsSfx;
 
 void initPlayer(Player& p)
 {
-	p.position = { static_cast<float>(screenWidth) / 2, static_cast<float>(screenHeight) / 2 - 100 };
+	int space = 100;
+
+	p.position = { static_cast<float>(screenWidth) / 2, static_cast<float>(screenHeight) / 2 - space };
 	p.speed = { 700, 700 };
 	p.height = 60;
 	p.width = 50;
@@ -23,19 +25,23 @@ void initPlayer(Player& p)
 
 void loadTexturePlayer()
 {
-	playerTexture = LoadTexture("res/player.png");
+	playerTexture = LoadTexture("res/player2.png");
 	loseLifeSfx = LoadSound("res/loseLifeSfx.mp3");
 	gameOverSfx = LoadSound("res/gameOverSfx.mp3");
 	pointsSfx = LoadSound("res/pointsSfx.mp3");
 
-	SetSoundVolume(loseLifeSfx, 0.1f);
-	SetSoundVolume(gameOverSfx, 0.3f);
-	SetSoundVolume(pointsSfx, 0.3f);
+	SetSoundVolume(loseLifeSfx, oneVolume);
+	SetSoundVolume(gameOverSfx, threeVolume);
+	SetSoundVolume(pointsSfx, threeVolume);
 }
 
 void updatePlayer(Player& p, bool& gameOver)
 {
+	int space = 200;
+
 	int lastSoundScore = 0;
+
+	int scoreCapSound = 10;
 
 	float antiGravity = -200.0f;
 
@@ -62,7 +68,7 @@ void updatePlayer(Player& p, bool& gameOver)
 		p.life--;
 		PlaySound(loseLifeSfx);
 		p.position.x = static_cast<float>(screenWidth) / 2;
-		p.position.y = static_cast<float>(screenHeight) / 2 - 200;
+		p.position.y = static_cast<float>(screenHeight) / 2 - space;
 		p.speed.x = 700;
 		p.speed.y = 700;
 	}
@@ -80,7 +86,7 @@ void updatePlayer(Player& p, bool& gameOver)
 		PlaySound(gameOverSfx);
 	}
 
-	if (p.score % 10 == 0 && p.score != lastSoundScore)
+	if (p.score % scoreCapSound == 0 && p.score != lastSoundScore)
 	{
 		PlaySound(pointsSfx);
 		lastSoundScore = p.score;

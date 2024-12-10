@@ -4,7 +4,10 @@
 
 #include "objects/utils.h"
 
+static Texture2D plataformTexture;
+
 Plataform plataforms[maxPlataforms];
+
 void initPlataform()
 {
 	const float initialY = static_cast<float>(screenHeight) / 2 + 150;
@@ -23,6 +26,11 @@ void initPlataform()
 
 	}
 	
+}
+
+void loadPlataformTexture()
+{
+	plataformTexture = LoadTexture("res/aliens.png");
 }
 
 void updatePlataform()
@@ -58,12 +66,7 @@ void drawPlataform()
 {
 	for (int i = 0; i < maxPlataforms; i++)
 	{
-		DrawRectangle(
-			static_cast<int>(plataforms[i].position.x),
-			static_cast<int>(plataforms[i].position.y),
-			plataforms[i].width,
-			plataforms[i].height,
-			DARKGRAY
-		);
+		DrawRectangle(static_cast<int>(plataforms[i].position.x),static_cast<int>(plataforms[i].position.y),plataforms[i].width,plataforms[i].height,DARKGRAY);
+		DrawTextureEx(plataformTexture, { plataforms[i].position.x, plataforms[i].position.y - 30}, 0.0f, 5.0f, WHITE);
 	}
 }

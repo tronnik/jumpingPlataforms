@@ -6,6 +6,9 @@
 #include "objects/utils.h"
 #include "scenes/menuScenes.h"
 
+static int seventy = 70;
+static int hundred = 100;
+
 void initPauseButton()
 {
 	initButton(pauseGame, screenWidth - 250, screenHeight - 100);
@@ -19,9 +22,9 @@ void drawPause(bool& menuOn, bool& pauseOn)
 
 	UpdateMusicStream(menuMusic);
 
-	DrawText(TextFormat("Pause game"), (screenWidth / 2 - 150), (screenHeight / 2 - 100), 50, WHITE);
+	DrawTextEx(fontGame, "Pause game", { static_cast<float>(screenWidth / 2 - hundred), static_cast<float>(screenHeight / 2 - hundred) }, static_cast<float>(seventy), 0.0f, RED);
 
-	DrawText(TextFormat("What Will You Do"), (screenWidth / 2 - 200), (screenHeight / 2 - sizeLetters), 50, WHITE);
+	DrawTextEx(fontGame, "What Will You Do?", { static_cast<float>(screenWidth / 2 - (hundred + seventy)), static_cast<float>(screenHeight / 2) }, static_cast<float>(seventy), 0.0f, RED);
 
 	drawButton(resumeGame);
 	drawResumeGameTitle();

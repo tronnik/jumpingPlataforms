@@ -19,21 +19,28 @@ Button gameplayMusicButton;
 Button clickSfxButton;
 Button gameOverSfx;
 Button pointsSfx;
-Button boostSfxButton;
-Button shootSfxButton;
+Button spriteButton;
+Button keysButton;
 
 static void drawPageButton(bool& creditsOn, bool& creditsOn2);
 
-static int hundred = 100;
+static int ten = 10;
+static int thirty = 30;
+static int twenty = 20;
 static int fifty = 50;
+static int hundred = 100;
 static int oneHundredFifty = 150;
 static int twoHundred = 200;
 static int twoHundredFifty = 250;
 static int threeHundredFifty = 350;
 static int fourHundredFifty = 450;
 static int fiveHundred = 500;
-
 static int sevenHundred = 700;
+
+static Texture2D aKey;
+static Texture2D dKey;
+static Texture2D arrowLeft;
+static Texture2D arrowRight;
 
 void initMenu()
 {
@@ -63,17 +70,17 @@ void initMenu()
 
 	initButton(MenuMusicButton, (screenWidth / 2 + fifty), hundred);
 
-	initButton(gameplayMusicButton, (screenWidth / 2 + fifty), (oneHundredFifty + 30));
+	initButton(gameplayMusicButton, (screenWidth / 2 + fifty), (oneHundredFifty + thirty));
 
-	initButton(clickSfxButton, (screenWidth / 2 + fifty), (twoHundredFifty + 10));
+	initButton(clickSfxButton, (screenWidth / 2 + fifty), (twoHundredFifty + ten));
 
-	initButton(gameOverSfx, (screenWidth / 2 + fifty), (threeHundredFifty - 10));
+	initButton(gameOverSfx, (screenWidth / 2 + fifty), (threeHundredFifty - ten));
 
-	initButton(pointsSfx, (screenWidth / 2 + fifty), (fourHundredFifty - 30));
+	initButton(pointsSfx, (screenWidth / 2 + fifty), (fourHundredFifty - thirty));
 
-	initButton(boostSfxButton, (screenWidth / 2 + fifty), fiveHundred);
+	initButton(spriteButton, (screenWidth / 2 + fifty), fiveHundred);
 
-	initButton(shootSfxButton, (screenWidth / 2 + fifty), (fiveHundred + 80));
+	initButton(keysButton, (screenWidth / 2 + fifty), (fiveHundred + hundred - twenty));
 
 	initPageButton(page1, (screenWidth / 2 - oneHundredFifty), sevenHundred);
 
@@ -85,22 +92,28 @@ void loadMenu()
 	menuMusic = LoadMusicStream("res/menuMusic.mp3");
 	menuBackground = LoadTexture("res/menuBackground.png");
 	clickSfx = LoadSound("res/clickSfx.mp3");
+	fontGame = LoadFont("res/Radioz.ttf");
+	aKey = LoadTexture("res/aKey.png");
+	dKey = LoadTexture("res/dKey.png");
+	arrowLeft = LoadTexture("res/arrowLeft.png");
+	arrowRight = LoadTexture("res/arrowRight.png");
 }
 
 void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 {
 	ClearBackground(BLACK);
 
-	SetMusicVolume(menuMusic, 0.1f);
+	SetMusicVolume(menuMusic, oneVolume);
 	
 	PlayMusicStream(menuMusic);
 	UpdateMusicStream(menuMusic);
 
-	SetSoundVolume(clickSfx, 0.3f);
+	SetSoundVolume(clickSfx, threeVolume);
 	
 	DrawTexture(menuBackground, 0, 0, LIGHTGRAY);
 
-	DrawText(TextFormat("Astronaut Survive"), (screenWidth / 2 - twoHundredFifty), oneHundredFifty, fifty, RED);
+
+	DrawTextEx(fontGame, "Astronaut Survive", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(oneHundredFifty) }, static_cast<float>(hundred), 0.0f, VIOLET);
 
 	drawButton(button);
 	drawButton(controls);
@@ -154,21 +167,25 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 
 void drawConstrols(bool& menuOn, bool& controlsOn)
 {
+	float scale = 3.0f;
+
 	ClearBackground(BLACK);
 
 	DrawTexture(menuBackground, 0, 0, LIGHTGRAY);
 
 	UpdateMusicStream(menuMusic);
 
-	DrawText("CONTROLS", (screenWidth / 2 - hundred), hundred, sizeLetters + 10, WHITE);
+	DrawTextEx(fontGame, "CONTROLS", { static_cast<float>(screenWidth / 2 - fifty - twenty), static_cast<float>(hundred) }, static_cast<float>(fifty), 0.0f, VIOLET);
 
-	DrawText("Move left: ", (screenWidth / 2) - (twoHundred + 20), twoHundredFifty, sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Move left:", { static_cast<float>(screenWidth / 2) - (twoHundred + twenty), static_cast<float>(twoHundredFifty) }, static_cast<float>(fifty), 0.0f, RED);
 
-	DrawText("A / Left Arrow", (screenWidth / 2 + hundred), twoHundredFifty, sizeLetters, WHITE);
+	DrawTextureEx(arrowLeft, { static_cast<float> (screenWidth / 2 + hundred), static_cast<float>(twoHundredFifty) }, 0.0f, scale, WHITE);
+	DrawTextureEx(aKey, { static_cast<float> (screenWidth / 2 + oneHundredFifty), static_cast<float>(twoHundredFifty) }, 0.0f, scale, WHITE);
 
-	DrawText("Move Right: ", (screenWidth / 2) - (twoHundred + 20), threeHundredFifty, sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Move Right:", { static_cast<float>((screenWidth / 2) - (twoHundred + 20)), static_cast<float>(threeHundredFifty) }, static_cast<float>(fifty), 0.0f, RED);
 
-	DrawText("D / right arrow", (screenWidth / 2 + hundred), threeHundredFifty, sizeLetters, WHITE);
+	DrawTextureEx(arrowRight, { static_cast<float> (screenWidth / 2 + hundred), static_cast<float>(threeHundredFifty) }, 0.0f, scale, WHITE);
+	DrawTextureEx(dKey, { static_cast<float> (screenWidth / 2 + oneHundredFifty), static_cast<float>(threeHundredFifty) }, 0.0f, scale, WHITE);
 
 	drawBackToMenu(menuOn, controlsOn);
 
@@ -182,50 +199,47 @@ void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 
 	UpdateMusicStream(menuMusic);
 
-	DrawText(TextFormat("CREDITS"), (screenWidth / 2 - fifty), fifty, sizeLetters, WHITE);
+	DrawTextEx(fontGame, "CREDITS", { static_cast<float>(screenWidth / 2 - fifty - twenty), static_cast<float>(fifty) }, static_cast<float>(sizeLetters), 0.0f, VIOLET);
 
-	DrawText("Developer: ", (screenWidth / 2 - twoHundredFifty), oneHundredFifty, sizeLetters, WHITE);
-
+	DrawTextEx(fontGame, "Developer", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(oneHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(ItchButton);
-	DrawText("Valentin Villar", (screenWidth / 2 + fifty + 10), oneHundredFifty + 10, sizeLetters - 5, RED);
+	DrawTextEx(fontGame, "Valentin Villar", { static_cast<float>(screenWidth / 2 + fifty + ten), static_cast<float>(oneHundredFifty + ten) }, static_cast<float>(sizeLetters - ten), 0.0f, RED);
 	if (isButtonPressed(ItchButton))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://valentin-villar.itch.io/");
 	}
 
-	DrawText("Backgrounds By: ", (screenWidth / 2 - twoHundredFifty), twoHundredFifty, sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Backgrounds By", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(twoHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(backgroundButton);
-	DrawText("Leonardo.ia", (screenWidth / 2 + fifty + 10), (twoHundredFifty + 10), sizeLetters, RED);
+	DrawTextEx(fontGame, "Leonardo.ia", { static_cast<float>(screenWidth / 2 + fifty + ten), static_cast<float>(twoHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(backgroundButton))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://app.leonardo.ai/image-generation");
 	}
 
-
-	DrawText("Library: ", (screenWidth / 2 - twoHundredFifty), threeHundredFifty, sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Library", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(threeHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(raylibButton);
-	DrawText("Raylib", (screenWidth / 2 + hundred + 10), (threeHundredFifty + 10), (sizeLetters - 5), RED);
+	DrawTextEx(fontGame, "Raylib", { static_cast<float>(screenWidth / 2 + hundred + ten), static_cast<float>(threeHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(raylibButton))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://www.raylib.com/index.html");
 	}
 
-	DrawText("Jump sfx By: ", (screenWidth / 2 - twoHundredFifty), fourHundredFifty, sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Jump sfx", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(fourHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(jumpSfx);
-	DrawText("Elevenslab", (screenWidth / 2 + hundred - 30), (fourHundredFifty + 10), sizeLetters, RED);
+	DrawTextEx(fontGame, "Elevenslab", { static_cast<float>(screenWidth / 2 + hundred - 30), static_cast<float>(fourHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(jumpSfx))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://elevenlabs.io/app/sound-effects/history");
 	}
 
-	DrawText("lose sfx: ", (screenWidth / 2 - twoHundredFifty), (fiveHundred + fifty), sizeLetters, WHITE);
-
+	DrawTextEx(fontGame, "Lose sfx", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(fiveHundred + fifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(loseSfx);
-	DrawText("Freesound", (screenWidth / 2 + hundred - 30), (fiveHundred + 60), sizeLetters, RED);
+	DrawTextEx(fontGame, "Freesound", { static_cast<float>(screenWidth / 2 + hundred - 30), static_cast<float>(fiveHundred + fifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(loseSfx))
 	{
 		PlaySound(clickSfx);
@@ -246,70 +260,69 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 
 	UpdateMusicStream(menuMusic);
 
-	DrawText(TextFormat("CREDITS"), (screenWidth / 2 - hundred - 40), fifty, sizeLetters, WHITE);
+	DrawTextEx(fontGame, "CREDITS", { static_cast<float>(screenWidth / 2 - fifty - twenty), static_cast<float>(fifty - ten) }, static_cast<float>(sizeLetters), 0.0f, VIOLET);
 
-	DrawText("Menu Music: ", (screenWidth / 2 - twoHundredFifty), hundred, sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Menu Music", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(hundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(MenuMusicButton);
-	DrawText("Tronik", (screenWidth / 2 + hundred), (hundred + 10), sizeLetters, RED);
+	DrawTextEx(fontGame, "Tronik", { static_cast<float>(screenWidth / 2 + hundred), static_cast<float>(hundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(MenuMusicButton))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://suno.com/song/1f50ed34-cad9-45c1-a778-1daaa4bc162e");
 	}
 
-	DrawText("Gameplay Music: ", (screenWidth / 2 - twoHundredFifty), (twoHundred - 20), sizeLetters, WHITE);
-	drawButton(gameplayMusicButton);
-	DrawText("Tronik", (screenWidth / 2 + hundred), (twoHundred - 10), sizeLetters, RED);
+	DrawTextEx(fontGame, "Gameplay Music", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(twoHundred - twenty) }, static_cast<float>(sizeLetters), 0.0f, RED);
+	drawButton(gameplayMusicButton);	
+	DrawTextEx(fontGame, "Tronik", { static_cast<float>(screenWidth / 2 + hundred), static_cast<float>(twoHundred - twenty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(gameplayMusicButton))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://suno.com/song/8bd8538e-799e-4c38-b2b6-80c1e0cb0327");
 	}
 
-
-	DrawText("Click SFX By: ", (screenWidth / 2 - twoHundredFifty), (twoHundredFifty + 10), sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Click SFX", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(twoHundredFifty + ten) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(clickSfxButton);
-	DrawText("Pixaby", (screenWidth / 2 + hundred), (twoHundredFifty + 20), sizeLetters, RED);
+	DrawTextEx(fontGame, "Pixaby", { static_cast<float>(screenWidth / 2 + hundred), static_cast<float>(twoHundredFifty + ten) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(clickSfxButton))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://pixabay.com/sound-effects/click-234708/");
 	}
 
-	DrawText("Game Over sfx: ", (screenWidth / 2 - twoHundredFifty), (threeHundredFifty - 10), sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Game Over sfx", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(threeHundredFifty - ten) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(gameOverSfx);
-	DrawText("Freesound", (screenWidth / 2 + hundred - 30), threeHundredFifty, sizeLetters, RED);
+	DrawTextEx(fontGame, "Freesound", { static_cast<float>(screenWidth / 2 + hundred - thirty), static_cast<float>(threeHundredFifty - ten) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(gameOverSfx))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://freesound.org/people/MATRIXXX_/sounds/365766/");
 	}
 
-	DrawText("Points sfx: ", (screenWidth / 2 - twoHundredFifty), (fourHundredFifty - 30), sizeLetters, WHITE);
+	DrawTextEx(fontGame, "Points sfx", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(fourHundredFifty - thirty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	drawButton(pointsSfx);
-	DrawText("Freesound", (screenWidth / 2 + hundred - 30), (fourHundredFifty - 20), sizeLetters, RED);
+	DrawTextEx(fontGame, "Freesound", { static_cast<float>(screenWidth / 2 + hundred - thirty), static_cast<float>(fourHundredFifty - thirty) }, static_cast<float>(sizeLetters), 0.0f, RED);
 	if (isButtonPressed(pointsSfx))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://freesound.org/people/Joao_Janz/sounds/482653/");
 	}
 
-	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), fiveHundred, sizeLetters, WHITE);
-	drawButton(boostSfxButton);
-	DrawText("vacio", (screenWidth / 2 + fifty), (fiveHundred + 10), sizeLetters, RED);
-	if (isButtonPressed(boostSfxButton))
+	DrawTextEx(fontGame, "Sprite Width", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(fiveHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
+	drawButton(spriteButton);
+	DrawTextEx(fontGame, "Piskel", { static_cast<float>(screenWidth / 2 + hundred), static_cast<float>(fiveHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
+	if (isButtonPressed(spriteButton))
 	{
 		PlaySound(clickSfx);
-		//OpenURL("https://elevenlabs.io/app/sound-effects/history");
+		OpenURL("https://www.piskelapp.com/");
 	}
 
-	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), (fiveHundred + 80), sizeLetters, WHITE);
-	drawButton(shootSfxButton);
-	DrawText("vacio", (screenWidth / 2 + hundred), (fiveHundred + 90), sizeLetters, RED);
-	if (isButtonPressed(shootSfxButton))
+	DrawTextEx(fontGame, "Keys By", { static_cast<float>(screenWidth / 2 - twoHundredFifty), static_cast<float>(fiveHundred + hundred - twenty) }, static_cast<float>(sizeLetters), 0.0f, RED);
+	drawButton(keysButton);
+	DrawTextEx(fontGame, "Dream Mix", { static_cast<float>(screenWidth / 2 + fifty + twenty), static_cast<float>(fiveHundred + hundred -twenty) }, static_cast<float>(sizeLetters), 0.0f, RED);
+	if (isButtonPressed(keysButton))
 	{
 		PlaySound(clickSfx);
-		//OpenURL("https://www.zapsplat.com/music/anime-hard-and-fast-laser-shoot-3/");
+		OpenURL("https://dreammix.itch.io/keyboard-keys-for-ui");
 	}
 
 	drawPageButton(creditsOn, creditsOn2);

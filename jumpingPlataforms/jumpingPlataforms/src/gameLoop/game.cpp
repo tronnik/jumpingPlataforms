@@ -13,7 +13,9 @@ int screenHeight = 768;
 int screenHeightMin = 0;
 int screenWidth = 800;
 int screenWidthMin = 0;
-int sizeLetters = 30;
+int sizeLetters = 50;
+float oneVolume = 0.1f;
+float threeVolume = 0.3f;
 
 bool menuOn = true;
 bool controlsOn = false;
@@ -28,6 +30,7 @@ Music menuMusic;
 Music gameplayMusic;
 Sound clickSfx;
 Texture2D menuBackground;
+Font fontGame;
 
 static void initializationGame();
 static void updateGame();
@@ -75,14 +78,6 @@ void drawGame()
 {
 	BeginDrawing();
 	ClearBackground(BLACK);
-
-	DrawText(TextFormat(" 0"), (screenWidth / 2), screenHeightMin, 30, RED);
-
-	DrawText(TextFormat(" 768"), (screenWidth / 2), screenHeight - 50, 30, RED);
-
-	DrawText(TextFormat(" 0"), screenWidthMin, screenHeight / 2, 30, RED);
-
-	DrawText(TextFormat(" 768"), screenWidth - 80, screenHeight / 2, 30, RED);
 
 	if (menuOn)
 	{
