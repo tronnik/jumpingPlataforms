@@ -10,18 +10,17 @@
 
 Button ItchButton;
 Button backgroundButton;
-Button spaceShipButton;
-Button bulletsButton;
+Button jumpSfx;
 Button raylibButton;
+Button loseSfx;
 
 Button MenuMusicButton;
 Button gameplayMusicButton;
 Button clickSfxButton;
-Button explosionSfxButton;
-Button loseSfxButton;
+Button gameOverSfx;
+Button pointsSfx;
 Button boostSfxButton;
 Button shootSfxButton;
-
 
 static void drawPageButton(bool& creditsOn, bool& creditsOn2);
 
@@ -56,11 +55,11 @@ void initMenu()
 
 	initButton(backgroundButton, (screenWidth / 2 + fifty), twoHundredFifty);
 
-	initButton(spaceShipButton, (screenWidth / 2 + fifty), threeHundredFifty);
+	initButton(raylibButton, (screenWidth / 2 + fifty), threeHundredFifty);
 
-	initButton(bulletsButton, (screenWidth / 2 + fifty), fourHundredFifty);
+	initButton(jumpSfx, (screenWidth / 2 + fifty), fourHundredFifty);
 
-	initButton(raylibButton, (screenWidth / 2 + fifty), (fiveHundred + fifty));
+	initButton(loseSfx, (screenWidth / 2 + fifty), fiveHundred + fifty);
 
 	initButton(MenuMusicButton, (screenWidth / 2 + fifty), hundred);
 
@@ -68,9 +67,9 @@ void initMenu()
 
 	initButton(clickSfxButton, (screenWidth / 2 + fifty), (twoHundredFifty + 10));
 
-	initButton(explosionSfxButton, (screenWidth / 2 + fifty), (threeHundredFifty - 10));
+	initButton(gameOverSfx, (screenWidth / 2 + fifty), (threeHundredFifty - 10));
 
-	initButton(loseSfxButton, (screenWidth / 2 + fifty), (fourHundredFifty - 30));
+	initButton(pointsSfx, (screenWidth / 2 + fifty), (fourHundredFifty - 30));
 
 	initButton(boostSfxButton, (screenWidth / 2 + fifty), fiveHundred);
 
@@ -92,7 +91,7 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 {
 	ClearBackground(BLACK);
 
-	SetMusicVolume(menuMusic, 0.5f);
+	SetMusicVolume(menuMusic, 0.1f);
 	
 	PlayMusicStream(menuMusic);
 	UpdateMusicStream(menuMusic);
@@ -163,13 +162,13 @@ void drawConstrols(bool& menuOn, bool& controlsOn)
 
 	DrawText("CONTROLS", (screenWidth / 2 - hundred), hundred, sizeLetters + 10, WHITE);
 
-	DrawText("Left Click: ", (screenWidth / 2) - (twoHundred + 20), twoHundredFifty, sizeLetters, WHITE);
+	DrawText("Move left: ", (screenWidth / 2) - (twoHundred + 20), twoHundredFifty, sizeLetters, WHITE);
 
-	DrawText("Shoot", (screenWidth / 2 + hundred), twoHundredFifty, sizeLetters, WHITE);
+	DrawText("A / Left Arrow", (screenWidth / 2 + hundred), twoHundredFifty, sizeLetters, WHITE);
 
-	DrawText("Right Click: ", (screenWidth / 2) - (twoHundred + 20), threeHundredFifty, sizeLetters, WHITE);
+	DrawText("Move Right: ", (screenWidth / 2) - (twoHundred + 20), threeHundredFifty, sizeLetters, WHITE);
 
-	DrawText("Move", (screenWidth / 2 + hundred), threeHundredFifty, sizeLetters, WHITE);
+	DrawText("D / right arrow", (screenWidth / 2 + hundred), threeHundredFifty, sizeLetters, WHITE);
 
 	drawBackToMenu(menuOn, controlsOn);
 
@@ -195,42 +194,42 @@ void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 		OpenURL("https://valentin-villar.itch.io/");
 	}
 
-	DrawText("Background By: ", (screenWidth / 2 - twoHundredFifty), twoHundredFifty, sizeLetters, WHITE);
+	DrawText("Backgrounds By: ", (screenWidth / 2 - twoHundredFifty), twoHundredFifty, sizeLetters, WHITE);
 	drawButton(backgroundButton);
-	DrawText("YO", (screenWidth / 2 + hundred - 10), (twoHundredFifty + 10), sizeLetters, RED);
+	DrawText("Leonardo.ia", (screenWidth / 2 + fifty + 10), (twoHundredFifty + 10), sizeLetters, RED);
 	if (isButtonPressed(backgroundButton))
 	{
 		PlaySound(clickSfx);
-		//OpenURL("https://ansimuz.itch.io/space-background");
+		OpenURL("https://app.leonardo.ai/image-generation");
 	}
 
 
-	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), threeHundredFifty, sizeLetters, WHITE);
-	drawButton(spaceShipButton);
-	DrawText("vacio", (screenWidth / 2 + hundred - 30), (threeHundredFifty + 10), (sizeLetters - 5), RED);
-	if (isButtonPressed(spaceShipButton))
-	{
-		PlaySound(clickSfx);
-		//OpenURL("https://pixel-by-pixel.itch.io/alcwilliam-space-ship-pack");
-	}
-
-	DrawText("vacio By: ", (screenWidth / 2 - twoHundredFifty), fourHundredFifty, sizeLetters, WHITE);
-	drawButton(bulletsButton);
-	DrawText("vacio", (screenWidth / 2 + hundred), (fourHundredFifty + 10), sizeLetters, RED);
-	if (isButtonPressed(bulletsButton))
-	{
-		PlaySound(clickSfx);
-		//OpenURL("https://ho88it.itch.io/2-d-projectile-sprites-wild-west-character-pack");
-	}
-
-	DrawText("Library: ", (screenWidth / 2 - twoHundredFifty), (fiveHundred + fifty), sizeLetters, WHITE);
-
+	DrawText("Library: ", (screenWidth / 2 - twoHundredFifty), threeHundredFifty, sizeLetters, WHITE);
 	drawButton(raylibButton);
-	DrawText("Raylib", (screenWidth / 2 + hundred - 10), (fiveHundred + 60), sizeLetters, RED);
+	DrawText("Raylib", (screenWidth / 2 + hundred + 10), (threeHundredFifty + 10), (sizeLetters - 5), RED);
 	if (isButtonPressed(raylibButton))
 	{
 		PlaySound(clickSfx);
 		OpenURL("https://www.raylib.com/index.html");
+	}
+
+	DrawText("Jump sfx By: ", (screenWidth / 2 - twoHundredFifty), fourHundredFifty, sizeLetters, WHITE);
+	drawButton(jumpSfx);
+	DrawText("Elevenslab", (screenWidth / 2 + hundred - 30), (fourHundredFifty + 10), sizeLetters, RED);
+	if (isButtonPressed(jumpSfx))
+	{
+		PlaySound(clickSfx);
+		OpenURL("https://elevenlabs.io/app/sound-effects/history");
+	}
+
+	DrawText("lose sfx: ", (screenWidth / 2 - twoHundredFifty), (fiveHundred + fifty), sizeLetters, WHITE);
+
+	drawButton(loseSfx);
+	DrawText("Freesound", (screenWidth / 2 + hundred - 30), (fiveHundred + 60), sizeLetters, RED);
+	if (isButtonPressed(loseSfx))
+	{
+		PlaySound(clickSfx);
+		OpenURL("https://freesound.org/people/suntemple/sounds/253174/");
 	}
 
 	drawPageButton(creditsOn, creditsOn2);
@@ -277,22 +276,22 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 		OpenURL("https://pixabay.com/sound-effects/click-234708/");
 	}
 
-	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), (threeHundredFifty - 10), sizeLetters, WHITE);
-	drawButton(explosionSfxButton);
-	DrawText("vacio", (screenWidth / 2 + hundred), threeHundredFifty, sizeLetters, RED);
-	if (isButtonPressed(explosionSfxButton))
+	DrawText("Game Over sfx: ", (screenWidth / 2 - twoHundredFifty), (threeHundredFifty - 10), sizeLetters, WHITE);
+	drawButton(gameOverSfx);
+	DrawText("Freesound", (screenWidth / 2 + hundred - 30), threeHundredFifty, sizeLetters, RED);
+	if (isButtonPressed(gameOverSfx))
 	{
 		PlaySound(clickSfx);
-		//OpenURL("https://www.zapsplat.com/music/8bit-medium-explosion-bomb-boom-or-blast-cannon-retro-old-school-classic-cartoon/");
+		OpenURL("https://freesound.org/people/MATRIXXX_/sounds/365766/");
 	}
 
-	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), (fourHundredFifty - 30), sizeLetters, WHITE);
-	drawButton(loseSfxButton);
-	DrawText("vacio", (screenWidth / 2 + hundred), (fourHundredFifty - 20), sizeLetters, RED);
-	if (isButtonPressed(loseSfxButton))
+	DrawText("Points sfx: ", (screenWidth / 2 - twoHundredFifty), (fourHundredFifty - 30), sizeLetters, WHITE);
+	drawButton(pointsSfx);
+	DrawText("Freesound", (screenWidth / 2 + hundred - 30), (fourHundredFifty - 20), sizeLetters, RED);
+	if (isButtonPressed(pointsSfx))
 	{
 		PlaySound(clickSfx);
-		//OpenURL("https://www.zapsplat.com/music/cartoon-orchestral-musical-pizzicato-riff-short-fail-or-lose/");
+		OpenURL("https://freesound.org/people/Joao_Janz/sounds/482653/");
 	}
 
 	DrawText("vacio: ", (screenWidth / 2 - twoHundredFifty), fiveHundred, sizeLetters, WHITE);

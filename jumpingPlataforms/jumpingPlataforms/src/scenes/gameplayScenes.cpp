@@ -11,6 +11,7 @@ static float reduceVelocity = -200.0f;
 
 static Texture2D background;
 extern Music gameplayMusic;
+static Sound jumpSfx;
 
 void gameplayInit()
 {
@@ -24,6 +25,10 @@ void loadGameplayTextures()
 	loadTexturePlayer();
 	background = LoadTexture("res/gameplaybackground.png");
 	gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
+	jumpSfx = LoadSound("res/jumpSfx.mp3");
+
+	SetMusicVolume(gameplayMusic, 0.1f);
+	SetSoundVolume(jumpSfx, 0.1f);
 }
 
 bool checkCollision(Player p, Plataform plat)
@@ -40,7 +45,6 @@ bool checkCollision(Player p, Plataform plat)
 
 void doCollision()
 {
-
 	for (int i = 0; i < maxPlataforms; i++)
 	{
 		if (checkCollision(player, plataforms[i]))
@@ -49,6 +53,7 @@ void doCollision()
 			{
 				player.score += addPoints;
 				plataforms[i].hasCollided = true; 
+				PlaySound(jumpSfx);
 			}
 			player.speed.y = reduceVelocity;
 		}
@@ -61,8 +66,6 @@ void doCollision()
 
 void gameplayUpdate(bool& gameOver)
 {
-	SetMusicVolume(gameplayMusic, 0.5f);
-
 	PlayMusicStream(gameplayMusic);
 	UpdateMusicStream(gameplayMusic);
 
