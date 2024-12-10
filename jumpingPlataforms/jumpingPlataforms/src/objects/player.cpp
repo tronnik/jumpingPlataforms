@@ -4,6 +4,8 @@
 
 namespace jumpingPlataform
 {
+	Player player;
+
 	static Texture2D playerTexture;
 
 	static Sound loseLifeSfx;
@@ -99,7 +101,6 @@ namespace jumpingPlataform
 	{
 		float scale = 2.0f;
 
-		DrawRectangle(static_cast<int>(p.position.x), static_cast<int>(p.position.y), p.width, p.height, RED);
 		DrawText(TextFormat(" Life: % 01i", p.life), screenWidthMin, screenHeightMin, 30, RED);
 		DrawText(TextFormat(" Points: %01i", p.score), screenWidth - 200, screenHeightMin, 30, RED);
 

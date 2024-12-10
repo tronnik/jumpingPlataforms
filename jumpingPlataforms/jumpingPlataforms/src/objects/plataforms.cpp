@@ -68,7 +68,6 @@ namespace jumpingPlataform
 	{
 		for (int i = 0; i < maxPlataforms; i++)
 		{
-			DrawRectangle(static_cast<int>(plataforms[i].position.x), static_cast<int>(plataforms[i].position.y), plataforms[i].width, plataforms[i].height, DARKGRAY);
 			DrawTextureEx(plataformTexture, { plataforms[i].position.x, plataforms[i].position.y - 30 }, 0.0f, 5.0f, WHITE);
 		}
 	}

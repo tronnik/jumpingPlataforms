@@ -54,7 +54,7 @@ namespace jumpingPlataform
 	{
 		Color buttonColor = CheckCollisionPointRec(GetMousePosition(),
 			Rectangle{ static_cast<float>(b.posX), static_cast<float>(b.posY),
-			static_cast<float>(b.width), static_cast<float>(b.height) }) ? DARKGRAY : LIGHTGRAY;
+			static_cast<float>(b.width), static_cast<float>(b.height) }) ? VIOLET : PINK;
 
 		DrawRectangle(b.posX, b.posY, b.width, b.height, buttonColor);
 	}
@@ -68,52 +68,52 @@ namespace jumpingPlataform
 
 	void drawPlayTitle()
 	{
-		DrawTextEx(fontGame, "PLAY", { static_cast<float>(screenWidth / 2 - forty), static_cast<float>(threeHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "PLAY", { static_cast<float>(screenWidth / 2 - forty), static_cast<float>(threeHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 	void drawControlTitle()
 	{
-		DrawTextEx(fontGame, "CREDITS", { static_cast<float>(screenWidth / 2 - seventy), static_cast<float>(fourHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "CREDITS", { static_cast<float>(screenWidth / 2 - seventy), static_cast<float>(fourHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 	void drawCreditsTitle()
 	{
-		DrawTextEx(fontGame, "CONTROLS", { static_cast<float>(screenWidth / 2 - eighty), static_cast<float>(fiveHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "CONTROLS", { static_cast<float>(screenWidth / 2 - eighty), static_cast<float>(fiveHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 	void drawExitTitle()
 	{
-		DrawTextEx(fontGame, "EXIT", { static_cast<float>(screenWidth / 2 - forty), static_cast<float>(sixHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "EXIT", { static_cast<float>(screenWidth / 2 - forty), static_cast<float>(sixHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 	void drawBackToMenuTitle()
 	{
-		DrawTextEx(fontGame, "MENU", { static_cast<float>(screenWidth / 2 + hundred), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "MENU", { static_cast<float>(screenWidth / 2 + hundred), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 	void drawPauseButtonTitle()
 	{
-		DrawTextEx(fontGame, "PAUSE", { static_cast<float>(screenWidth - twoHundred), static_cast<float>(screenHeight - hundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "PAUSE", { static_cast<float>(screenWidth - twoHundred), static_cast<float>(screenHeight - hundred) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 	void drawResumeGameTitle()
 	{
-		DrawTextEx(fontGame, "RESUME", { static_cast<float>(screenWidth / 2 - hundred - sixty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "RESUME", { static_cast<float>(screenWidth / 2 - hundred - sixty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 	void drawPlayAgainTitle()
 	{
-		DrawTextEx(fontGame, "PLAY AGAIN", { static_cast<float>(screenWidth / 2 - twoHundred + twnty), static_cast<float>(sevenHundred + ten) }, static_cast<float>(sizeLetters - ten), 0.0f, RED);
+		DrawTextEx(fontGame, "PLAY AGAIN", { static_cast<float>(screenWidth / 2 - twoHundred + twnty), static_cast<float>(sevenHundred + ten) }, static_cast<float>(sizeLetters - ten), 0.0f, DARKPURPLE);
 	}
 
 	void drawPage1Title()
 	{
-		DrawTextEx(fontGame, "1", { static_cast<float>(screenWidth / 2 - hundred - thirty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "1", { static_cast<float>(screenWidth / 2 - hundred - thirty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 	void drawPage2Title()
 	{
-		DrawTextEx(fontGame, "2", { static_cast<float>(screenWidth / 2 - thirty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, RED);
+		DrawTextEx(fontGame, "2", { static_cast<float>(screenWidth / 2 - thirty), static_cast<float>(sevenHundred) }, static_cast<float>(sizeLetters), 0.0f, DARKPURPLE);
 	}
 
 }

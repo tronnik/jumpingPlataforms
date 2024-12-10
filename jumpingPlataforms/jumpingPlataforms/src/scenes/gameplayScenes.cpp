@@ -6,7 +6,6 @@
 
 namespace jumpingPlataform
 {
-	Player player;
 
 	static int addPoints = 1;
 

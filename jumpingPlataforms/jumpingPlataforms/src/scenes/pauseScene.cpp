@@ -25,9 +25,9 @@ namespace jumpingPlataform
 
 		UpdateMusicStream(menuMusic);
 
-		DrawTextEx(fontGame, "Pause game", { static_cast<float>(screenWidth / 2 - hundred), static_cast<float>(screenHeight / 2 - hundred) }, static_cast<float>(seventy), 0.0f, RED);
+		DrawTextEx(fontGame, "Pause game", { static_cast<float>(screenWidth / 2 - hundred), static_cast<float>(screenHeight / 2 - hundred) }, static_cast<float>(seventy), 0.0f, PURPLE);
 
-		DrawTextEx(fontGame, "What Will You Do?", { static_cast<float>(screenWidth / 2 - (hundred + seventy)), static_cast<float>(screenHeight / 2) }, static_cast<float>(seventy), 0.0f, RED);
+		DrawTextEx(fontGame, "What Will You Do?", { static_cast<float>(screenWidth / 2 - (hundred + seventy)), static_cast<float>(screenHeight / 2) }, static_cast<float>(seventy), 0.0f, PURPLE);
 
 		drawButton(resumeGame);
 		drawResumeGameTitle();

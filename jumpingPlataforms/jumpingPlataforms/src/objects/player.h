@@ -15,6 +15,8 @@ namespace jumpingPlataform
 		int life;
 	};
 
+	extern 	Player player;
+
 	void initPlayer(Player& p);
 	void loadTexturePlayer();
 	void updatePlayer(Player& p, bool& gameOver);

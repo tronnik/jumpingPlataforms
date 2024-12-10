@@ -2,5 +2,5 @@
 
 namespace jumpingPlataform
 {
-	void drawGameOverScene(bool& menuOn, bool& gameOver);
+	void drawGameOverScene(bool& menuOn, bool& gameOver, int playerScore);
 }

@@ -4,6 +4,7 @@
 
 #include "objects/utils.h"
 #include "objects/button.h"
+#include "objects/player.h"
 #include "scenes/menuScenes.h"
 #include "scenes/pauseScene.h"
 #include "scenes/gameOverScene.h"
@@ -99,7 +100,7 @@ namespace jumpingPlataform
 		}
 		else if (gameOver)
 		{
-			drawGameOverScene(menuOn, gameOver);
+			drawGameOverScene(menuOn, gameOver, player.score);
 		}
 		else if (pauseOn)
 		{
