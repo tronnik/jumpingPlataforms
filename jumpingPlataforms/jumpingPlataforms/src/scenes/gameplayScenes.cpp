@@ -22,9 +22,8 @@ void gameplayInit()
 void loadGameplayTextures()
 {
 	loadTexturePlayer();
-	background = LoadTexture("res/background.png");
+	background = LoadTexture("res/gameplaybackground.png");
 	gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
-
 }
 
 bool checkCollision(Player p, Plataform plat)

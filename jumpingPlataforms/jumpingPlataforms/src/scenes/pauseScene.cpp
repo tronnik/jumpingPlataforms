@@ -15,9 +15,9 @@ void drawPause(bool& menuOn, bool& pauseOn)
 {
 	ClearBackground(BLACK);
 
-	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+	DrawTexture(menuBackground, 0, 0, LIGHTGRAY);
 
-	//UpdateMusicStream(menuMusic);
+	UpdateMusicStream(menuMusic);
 
 	DrawText(TextFormat("Pause game"), (screenWidth / 2 - 150), (screenHeight / 2 - 100), 50, WHITE);
 
@@ -28,7 +28,7 @@ void drawPause(bool& menuOn, bool& pauseOn)
 
 	if (isButtonPressed(resumeGame))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		pauseOn = false;
 	}
 

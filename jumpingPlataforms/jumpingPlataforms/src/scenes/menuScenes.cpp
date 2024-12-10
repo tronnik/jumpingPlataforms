@@ -2,16 +2,11 @@
 
 #include "raylib.h"
 
-#include "objects/button.h"
 #include "objects/utils.h"
-#include "scenes/gameplayScenes.h"
-#include "objects/player.h"
 #include "gameLoop/game.h"
-
-
-//extern Texture2D background;
-extern Music menuMusic;
-Sound clickSfx;
+#include "objects/button.h"
+#include "objects/player.h"
+#include "scenes/gameplayScenes.h"
 
 Button ItchButton;
 Button backgroundButton;
@@ -89,7 +84,7 @@ void initMenu()
 void loadMenu()
 {
 	menuMusic = LoadMusicStream("res/menuMusic.mp3");
-	//background = LoadTexture("res/background.png");
+	menuBackground = LoadTexture("res/menuBackground.png");
 	clickSfx = LoadSound("res/clickSfx.mp3");
 }
 
@@ -104,7 +99,7 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 
 	SetSoundVolume(clickSfx, 0.3f);
 	
-	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+	DrawTexture(menuBackground, 0, 0, LIGHTGRAY);
 
 	DrawText(TextFormat("Astronaut Survive"), (screenWidth / 2 - twoHundredFifty), oneHundredFifty, fifty, RED);
 
@@ -151,7 +146,7 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 
 	if (isButtonPressed(backToMenu))
 	{
-		//PlaySound(clickSfx);
+		PlaySound(clickSfx);
 		menuOn = true;
 		creditsOn = false;
 		controlsOn = false;
@@ -162,7 +157,7 @@ void drawConstrols(bool& menuOn, bool& controlsOn)
 {
 	ClearBackground(BLACK);
 
-	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+	DrawTexture(menuBackground, 0, 0, LIGHTGRAY);
 
 	UpdateMusicStream(menuMusic);
 
@@ -184,7 +179,7 @@ void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 {
 	ClearBackground(BLACK);
 
-	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+	DrawTexture(menuBackground, 0, 0, LIGHTGRAY);
 
 	UpdateMusicStream(menuMusic);
 
@@ -248,7 +243,7 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 {
 	ClearBackground(BLACK);
 
-	//DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+	DrawTexture(menuBackground, 0, 0, LIGHTGRAY);
 
 	UpdateMusicStream(menuMusic);
 
@@ -366,7 +361,7 @@ void drawPageButton(bool& creditsOn, bool& creditsOn2)
 
 void unloadMenu()
 {
-	//UnloadTexture(background);
+	UnloadTexture(menuBackground);
 	UnloadMusicStream(menuMusic);
 	UnloadSound(clickSfx);
 }

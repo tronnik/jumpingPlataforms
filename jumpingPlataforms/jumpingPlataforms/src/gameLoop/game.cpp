@@ -26,6 +26,8 @@ bool windowOpen = true;
 
 Music menuMusic;
 Music gameplayMusic;
+Sound clickSfx;
+Texture2D menuBackground;
 
 static void initializationGame();
 static void updateGame();
