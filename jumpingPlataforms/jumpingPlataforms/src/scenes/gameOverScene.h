@@ -1,3 +1,6 @@
 #pragma once
 
-void drawGameOverScene(bool& menuOn, bool& gameOver);
+namespace jumpingPlataform
+{
+	void drawGameOverScene(bool& menuOn, bool& gameOver);
+}

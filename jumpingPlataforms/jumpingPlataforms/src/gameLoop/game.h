@@ -1,4 +1,7 @@
 #pragma once
 
-void run();
-void close();
+namespace jumpingPlataform
+{
+	void run();
+	void close();
+}

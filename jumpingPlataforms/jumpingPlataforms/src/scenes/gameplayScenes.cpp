@@ -4,103 +4,106 @@
 #include "objects/button.h"
 #include "scenes/pauseScene.h"
 
-Player player;
-
-static int addPoints = 1;
-
-static float reduceVelocity = -200.0f;
-
-static Texture2D background;
-extern Music gameplayMusic;
-static Sound jumpSfx;
-
-void gameplayInit()
+namespace jumpingPlataform
 {
-	initPlayer(player);
-	initPlataform();
-	initPauseButton();
-}
+	Player player;
 
-void loadGameplayTextures()
-{
-	loadTexturePlayer();
-	loadPlataformTexture();
-	background = LoadTexture("res/gameplaybackground.png");
-	gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
-	jumpSfx = LoadSound("res/jumpSfx.mp3");
+	static int addPoints = 1;
 
-	SetMusicVolume(gameplayMusic, oneVolume);
-	SetSoundVolume(jumpSfx, oneVolume);
-}
+	static float reduceVelocity = -200.0f;
 
-bool checkCollision(Player p, Plataform plat)
-{
-	if (p.position.x + p.width >= plat.position.x &&
-		p.position.x <= plat.position.x + plat.width &&
-		p.position.y + p.height >= plat.position.y &&
-		p.position.y <= plat.position.y + plat.height)
+	static Texture2D background;
+	extern Music gameplayMusic;
+	static Sound jumpSfx;
+
+	void gameplayInit()
 	{
-		return true;
+		initPlayer(player);
+		initPlataform();
+		initPauseButton();
 	}
-	return false;
-}
 
-void doCollision()
-{
-	for (int i = 0; i < maxPlataforms; i++)
+	void loadGameplayTextures()
 	{
-		if (checkCollision(player, plataforms[i]))
+		loadTexturePlayer();
+		loadPlataformTexture();
+		background = LoadTexture("res/gameplaybackground.png");
+		gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
+		jumpSfx = LoadSound("res/jumpSfx.mp3");
+
+		SetMusicVolume(gameplayMusic, oneVolume);
+		SetSoundVolume(jumpSfx, oneVolume);
+	}
+
+	bool checkCollision(Player p, Plataform plat)
+	{
+		if (p.position.x + p.width >= plat.position.x &&
+			p.position.x <= plat.position.x + plat.width &&
+			p.position.y + p.height >= plat.position.y &&
+			p.position.y <= plat.position.y + plat.height)
 		{
-			if (!plataforms[i].hasCollided)
+			return true;
+		}
+		return false;
+	}
+
+	void doCollision()
+	{
+		for (int i = 0; i < maxPlataforms; i++)
+		{
+			if (checkCollision(player, plataforms[i]))
 			{
-				player.score += addPoints;
-				plataforms[i].hasCollided = true; 
-				PlaySound(jumpSfx);
+				if (!plataforms[i].hasCollided)
+				{
+					player.score += addPoints;
+					plataforms[i].hasCollided = true;
+					PlaySound(jumpSfx);
+				}
+				player.speed.y = reduceVelocity;
 			}
-			player.speed.y = reduceVelocity;
-		}
-		else
-		{
-			plataforms[i].hasCollided = false; 
+			else
+			{
+				plataforms[i].hasCollided = false;
+			}
 		}
 	}
-}
 
-void gameplayUpdate(bool& gameOver)
-{
-	PlayMusicStream(gameplayMusic);
-	UpdateMusicStream(gameplayMusic);
-
-	updatePlayer(player, gameOver);
-	updatePlataform();
-	doCollision();
-}
-
-void gameplayDraw(bool& menuOn, bool& pauseOn)
-{
-	DrawTexture(background, 0, 0, LIGHTGRAY);
-	drawPlayer(player);
-	drawPlataform();
-
-	drawButton(pauseGame);
-
-	drawPauseButtonTitle();
-
-	if (isButtonPressed(pauseGame))
+	void gameplayUpdate(bool& gameOver)
 	{
-		pauseOn = true;
-		menuOn = false;
+		PlayMusicStream(gameplayMusic);
+		UpdateMusicStream(gameplayMusic);
+
+		updatePlayer(player, gameOver);
+		updatePlataform();
+		doCollision();
 	}
-}
 
-void resetGame()
-{
-	initPlayer(player);
-	initPlataform();
-}
+	void gameplayDraw(bool& menuOn, bool& pauseOn)
+	{
+		DrawTexture(background, 0, 0, LIGHTGRAY);
+		drawPlayer(player);
+		drawPlataform();
 
-void unloadGameplay()
-{
-	UnloadTexture(background);
-	UnloadMusicStream(gameplayMusic);
+		drawButton(pauseGame);
+
+		drawPauseButtonTitle();
+
+		if (isButtonPressed(pauseGame))
+		{
+			pauseOn = true;
+			menuOn = false;
+		}
+	}
+
+	void resetGame()
+	{
+		initPlayer(player);
+		initPlataform();
+	}
+
+	void unloadGameplay()
+	{
+		UnloadTexture(background);
+		UnloadMusicStream(gameplayMusic);
+	}
 }

@@ -1,20 +1,23 @@
 #pragma once
 
-void initMenu();
+namespace jumpingPlataform
+{
+	void initMenu();
 
-void loadMenu();
+	void loadMenu();
 
-void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn);
+	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn);
 
-void drawConstrols(bool& menuOn, bool& controlsOn);
+	void drawConstrols(bool& menuOn, bool& controlsOn);
 
-void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2);
+	void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2);
 
-void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2);
+	void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2);
 
-void drawBackToMenu(bool& boolTrue, bool& boolFalse);
+	void drawBackToMenu(bool& boolTrue, bool& boolFalse);
 
-void unloadMenu();
+	void unloadMenu();
+}
 
 
 

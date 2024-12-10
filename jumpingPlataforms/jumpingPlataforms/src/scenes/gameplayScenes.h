@@ -3,19 +3,22 @@
 #include "objects/player.h"
 #include "objects/plataforms.h"
 
-void gameplayInit();
+namespace jumpingPlataform
+{
+	void gameplayInit();
 
-void loadGameplayTextures();
+	void loadGameplayTextures();
 
-bool checkCollision(Player p, Plataform plat);
+	bool checkCollision(Player p, Plataform plat);
 
-void doCollision();
+	void doCollision();
 
-void gameplayUpdate(bool& gameOver);
+	void gameplayUpdate(bool& gameOver);
 
-void gameplayDraw(bool& menuOn, bool& pauseOn);
+	void gameplayDraw(bool& menuOn, bool& pauseOn);
 
-void resetGame();
+	void resetGame();
 
-void unloadGameplay();
+	void unloadGameplay();
+}
 

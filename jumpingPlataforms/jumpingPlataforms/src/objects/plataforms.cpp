@@ -4,69 +4,72 @@
 
 #include "objects/utils.h"
 
-static Texture2D plataformTexture;
-
-Plataform plataforms[maxPlataforms];
-
-void initPlataform()
+namespace jumpingPlataform
 {
-	const float initialY = static_cast<float>(screenHeight) / 2 + 150;
+	static Texture2D plataformTexture;
 
-	for (int i = 0; i < maxPlataforms; i++)
+	Plataform plataforms[maxPlataforms];
+
+	void initPlataform()
 	{
-		plataforms[i].space = 300.0f;
+		const float initialY = static_cast<float>(screenHeight) / 2 + 150;
 
-		plataforms[i].position = {static_cast<float>(GetRandomValue(screenWidthMin, screenWidth)), initialY -i * plataforms[i].space};
-
-		plataforms[i].speedY = 100;
-		plataforms[i].height = 25;
-		plataforms[i].width = 150;
-		plataforms[i].gravity = 150;
-		plataforms[i].hasCollided = false;
-
-	}
-	
-}
-
-void loadPlataformTexture()
-{
-	plataformTexture = LoadTexture("res/aliens.png");
-}
-
-void updatePlataform()
-{
-	
-	for (int i = 0; i < maxPlataforms; i++)
-	{
-		plataforms[i].speedY += plataforms[i].gravity * GetFrameTime();
-
-		plataforms[i].position.y += plataforms[i].speedY * GetFrameTime();
-
-		if (plataforms[i].position.x + plataforms[i].width >= screenWidth)
+		for (int i = 0; i < maxPlataforms; i++)
 		{
-			plataforms[i].position.x = static_cast<float>(screenWidth) - static_cast<float>(plataforms[i].width);
-		}
+			plataforms[i].space = 300.0f;
 
-		if (plataforms[i].position.x <= screenWidthMin)
-		{
-			plataforms[i].position.x = static_cast<float>(screenWidthMin);
-		}
+			plataforms[i].position = { static_cast<float>(GetRandomValue(screenWidthMin, screenWidth)), initialY - i * plataforms[i].space };
 
-		if (plataforms[i].position.y > screenHeight)
-		{
-			plataforms[i].position.y = static_cast<float>(-plataforms[i].space);
-			plataforms[i].position.x = static_cast<float>(GetRandomValue(50, 750)); 
-			plataforms[i].speedY = 100; 
+			plataforms[i].speedY = 100;
+			plataforms[i].height = 25;
+			plataforms[i].width = 150;
 			plataforms[i].gravity = 150;
+			plataforms[i].hasCollided = false;
+
+		}
+
+	}
+
+	void loadPlataformTexture()
+	{
+		plataformTexture = LoadTexture("res/aliens.png");
+	}
+
+	void updatePlataform()
+	{
+
+		for (int i = 0; i < maxPlataforms; i++)
+		{
+			plataforms[i].speedY += plataforms[i].gravity * GetFrameTime();
+
+			plataforms[i].position.y += plataforms[i].speedY * GetFrameTime();
+
+			if (plataforms[i].position.x + plataforms[i].width >= screenWidth)
+			{
+				plataforms[i].position.x = static_cast<float>(screenWidth) - static_cast<float>(plataforms[i].width);
+			}
+
+			if (plataforms[i].position.x <= screenWidthMin)
+			{
+				plataforms[i].position.x = static_cast<float>(screenWidthMin);
+			}
+
+			if (plataforms[i].position.y > screenHeight)
+			{
+				plataforms[i].position.y = static_cast<float>(-plataforms[i].space);
+				plataforms[i].position.x = static_cast<float>(GetRandomValue(50, 750));
+				plataforms[i].speedY = 100;
+				plataforms[i].gravity = 150;
+			}
 		}
 	}
-}
 
-void drawPlataform()
-{
-	for (int i = 0; i < maxPlataforms; i++)
+	void drawPlataform()
 	{
-		DrawRectangle(static_cast<int>(plataforms[i].position.x),static_cast<int>(plataforms[i].position.y),plataforms[i].width,plataforms[i].height,DARKGRAY);
-		DrawTextureEx(plataformTexture, { plataforms[i].position.x, plataforms[i].position.y - 30}, 0.0f, 5.0f, WHITE);
+		for (int i = 0; i < maxPlataforms; i++)
+		{
+			DrawRectangle(static_cast<int>(plataforms[i].position.x), static_cast<int>(plataforms[i].position.y), plataforms[i].width, plataforms[i].height, DARKGRAY);
+			DrawTextureEx(plataformTexture, { plataforms[i].position.x, plataforms[i].position.y - 30 }, 0.0f, 5.0f, WHITE);
+		}
 	}
 }
