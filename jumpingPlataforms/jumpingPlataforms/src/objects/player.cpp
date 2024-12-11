@@ -81,8 +81,13 @@ namespace jumpingPlataform
 
 		p.position.y += p.speed.y * GetFrameTime();
 
-		if (IsKeyDown(KEY_SPACE))
-			p.speed.y = antiGravity;
+		if (IsKeyDown(KEY_S))
+		{
+			if (IsKeyDown(KEY_SPACE))
+			{
+				p.speed.y = antiGravity;
+			}
+		}
 
 		if (p.life == 0)
 		{

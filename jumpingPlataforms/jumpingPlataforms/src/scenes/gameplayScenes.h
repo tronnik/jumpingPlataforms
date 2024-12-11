@@ -17,7 +17,7 @@ namespace jumpingPlataform
 
 	void gameplayDraw(bool& menuOn, bool& pauseOn);
 
-	void resetGame();
+	void resetGame(bool& gameplayPaused);
 
 	void unloadGameplay();
 }

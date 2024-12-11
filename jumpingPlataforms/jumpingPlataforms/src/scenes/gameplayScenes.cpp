@@ -94,10 +94,11 @@ namespace jumpingPlataform
 		}
 	}
 
-	void resetGame()
+	void resetGame(bool& gameplayPaused)
 	{
 		initPlayer(player);
 		initPlataform();
+		gameplayPaused = true;
 	}
 
 	void unloadGameplay()

@@ -6,7 +6,7 @@ namespace jumpingPlataform
 
 	void loadMenu();
 
-	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn);
+	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn, bool& gameplayPaused);
 
 	void drawConstrols(bool& menuOn, bool& controlsOn);
 

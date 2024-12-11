@@ -98,7 +98,7 @@ namespace jumpingPlataform
 
 		if (menuOn)
 		{
-			drawMenu(menuOn, controlsOn, creditsOn);
+			drawMenu(menuOn, controlsOn, creditsOn, gameplayPaused);
 		}
 		else if (controlsOn)
 		{
@@ -114,7 +114,7 @@ namespace jumpingPlataform
 		}
 		else if (gameOver)
 		{
-			drawGameOverScene(menuOn, gameOver, player.score);
+			drawGameOverScene(menuOn, gameOver, player.score, gameplayPaused);
 		}
 		else if (pauseOn)
 		{

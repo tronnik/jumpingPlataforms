@@ -25,9 +25,7 @@ namespace jumpingPlataform
 			plataforms[i].width = 150;
 			plataforms[i].gravity = 150;
 			plataforms[i].hasCollided = false;
-
 		}
-
 	}
 
 	void loadPlataformTexture()

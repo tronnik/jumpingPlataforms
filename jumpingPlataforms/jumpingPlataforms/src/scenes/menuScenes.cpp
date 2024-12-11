@@ -101,7 +101,7 @@ namespace jumpingPlataform
 		arrowRight = LoadTexture("res/arrowRight.png");
 	}
 
-	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
+	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn, bool& gameplayPaused)
 	{
 		ClearBackground(BLACK);
 
@@ -133,7 +133,7 @@ namespace jumpingPlataform
 
 			menuOn = false;
 
-			resetGame();
+			resetGame(gameplayPaused);
 		}
 
 		if (isButtonPressed(controls))

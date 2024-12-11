@@ -17,7 +17,7 @@ namespace jumpingPlataform
 	static int hundred = 100;
 	static int twoHundred = 200;
 
-	void drawGameOverScene(bool& menuOn, bool& gameOver, int playerScore)
+	void drawGameOverScene(bool& menuOn, bool& gameOver, int playerScore, bool& gameplayPaused)
 	{
 		ClearBackground(BLACK);
 
@@ -40,7 +40,7 @@ namespace jumpingPlataform
 		{
 			PlaySound(clickSfx);
 			gameOver = false;
-			resetGame();
+			resetGame(gameplayPaused);
 		}
 
 		drawBackToMenu(menuOn, gameOver);
