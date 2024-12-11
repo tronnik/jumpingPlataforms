@@ -9,11 +9,11 @@ in the itch.io page you will download the zip with the .exe and the folder with 
 ### Controls
 The basic controls are a left-click to shoot where to place your move and rigth-click to move.
 
-link of the [itch.io]((https://valentin-villar.itch.io/astronaut-survive))
+link of the [itch.io](https://valentin-villar.itch.io/astronaut-survive)
 
-![Image]([https://img.itch.zone/aW1nLzE4MzgxMjY1LnBuZw==/105x83%23/EQA602.png](https://img.itch.zone/aW1hZ2UvMzE3MTY0OS8xODkzODQzNy5wbmc=/original/FhxjGi.png))
+![Image](https://img.itch.zone/aW1nLzE4MzgxMjY1LnBuZw==/105x83%23/EQA602.png](https://img.itch.zone/aW1hZ2UvMzE3MTY0OS8xODkzODQzNy5wbmc=/original/FhxjGi.png)
 
-![Image]((https://img.itch.zone/aW1hZ2UvMzE3MTY0OS8xODkzODQ0MC5wbmc=/original/ThsRZo.png))
+![Image](https://img.itch.zone/aW1hZ2UvMzE3MTY0OS8xODkzODQ0MC5wbmc=/original/ThsRZo.png)
 
 ## About me
 I’m Valentin Villar, also known as Tronik. I’m a programming student, and I made this game using Raylib with C++ programming language.
