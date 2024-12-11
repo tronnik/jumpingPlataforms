@@ -8,24 +8,18 @@
 
 namespace jumpingPlataform
 {
-	static int ten = 10;
-	static int thirty = 30;
-	static int twenty = 20;
 	static int fifty = 50;
-	static int hundred = 100;
 	static int oneHundredFifty = 150;
 	static int twoHundred = 200;
-	static int twoHundredFifty = 250;
-	static int threeHundredFifty = 350;
-	static int fourHundredFifty = 450;
-	static int fiveHundred = 500;
-	static int sevenHundred = 700;
 
 	 float gameInterval = 5.0f;
 
 	void updateGameplyaPaused(bool& gameplayPaused)
 	{
 		ClearBackground(BLANK);
+
+		PlayMusicStream(gameplayMusic);
+		UpdateMusicStream(gameplayMusic);
 
 		gameInterval -= GetFrameTime();
 
@@ -45,5 +39,6 @@ namespace jumpingPlataform
 		DrawTextEx(fontGame, "Astronaut Survive will begin in:", { static_cast<float>(screenWidth / 2 - twoHundred), static_cast<float>(oneHundredFifty) }, static_cast<float>(sizeLetters), 0.0f, PURPLE);
 
 		DrawText(TextFormat("%01i", static_cast<int>(gameInterval)), (screenWidth / 2 ), (screenHeight / 2 - fifty), sizeLetters, PURPLE);
+
 	}
 }

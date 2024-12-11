@@ -106,8 +106,8 @@ namespace jumpingPlataform
 	{
 		float scale = 2.0f;
 
-		DrawText(TextFormat(" Life: % 01i", p.life), screenWidthMin, screenHeightMin, 30, RED);
-		DrawText(TextFormat(" Points: %01i", p.score), screenWidth - 200, screenHeightMin, 30, RED);
+		DrawText(TextFormat(" Life: % 01i", p.life), screenWidthMin, screenHeightMin, 30, PURPLE);
+		DrawText(TextFormat(" Points: %01i", p.score), screenWidth - 200, screenHeightMin, 30, PURPLE);
 
 		DrawTextureEx(playerTexture, { p.position.x - 5, p.position.y - 5 }, 0.0f, scale, WHITE);
 	}

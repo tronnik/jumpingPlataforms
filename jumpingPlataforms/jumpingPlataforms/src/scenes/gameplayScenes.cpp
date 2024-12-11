@@ -12,7 +12,6 @@ namespace jumpingPlataform
 	static float reduceVelocity = -200.0f;
 
 	static Texture2D background;
-	extern Music gameplayMusic;
 	static Sound jumpSfx;
 
 	void gameplayInit()

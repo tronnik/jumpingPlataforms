@@ -62,7 +62,7 @@ namespace jumpingPlataform
 
 	void initializationGame()
 	{
-		InitWindow(screenWidth, screenHeight, "Mi juego");
+		InitWindow(screenWidth, screenHeight, "Astronaut Survive");
 
 		InitAudioDevice();
 

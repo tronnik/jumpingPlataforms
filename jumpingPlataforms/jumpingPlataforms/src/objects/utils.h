@@ -8,6 +8,7 @@ namespace jumpingPlataform
 	extern int screenWidthMin;
 	extern int sizeLetters;
 	extern Music menuMusic;
+	extern Music gameplayMusic;
 	extern Sound clickSfx;
 	extern Texture2D menuBackground;
 	extern Font fontGame;
